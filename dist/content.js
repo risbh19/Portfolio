@@ -5,9 +5,9 @@ window.PORTFOLIO = {
   location: 'RKGIT · Ghaziabad, India',
   email: 'palrishabh989@gmail.com',
   intro:
-    'I’m Rishabh, a Computer Science student building full-stack applications with Python, FastAPI and React.',
+    "I'm Rishabh, a Computer Science student building **full-stack applications** and **AI/ML systems** with Python, FastAPI and React. I like turning real problems into products that are reliable, secure and simple to use.",
   about:
-    'I build applications that connect people and information, from healthcare workflows to coastal safety systems. My testing experience shapes how I approach APIs, edge cases and reliable software.',
+    "I'm Rishabh, a Computer Science student building **full-stack applications** and **AI/ML systems** with Python, FastAPI and React. I like turning real problems into products that are reliable, secure and simple to use.",
   status: 'B.Tech CSE student · RKGIT',
   focus: 'Full-stack development & API testing',
   socials: {
