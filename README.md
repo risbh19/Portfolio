@@ -40,6 +40,14 @@ CONTRIBUTING.md       Review and merge workflow
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
 
+## Contact form setup
+
+The contact section uses vanilla JavaScript and [Web3Forms](https://docs.web3forms.com/getting-started/api-reference). Paste the access key for `palrishabh989@gmail.com` into **`WEB3FORMS_ACCESS_KEY` at the top of `dist/contact.js`**, replacing `YOUR_WEB3FORMS_ACCESS_KEY`. This static site has no build step, so Vercel environment variables are not injected into browser scripts. Web3Forms access keys are intended for client-side use.
+
+The form posts `FormData` directly to Web3Forms, including the topic/name subject, reply email, message and hidden `botcheck` honeypot. It shows validation, sending, success/reset and failure states in place. Requests time out after 20 seconds; failures preserve the visitor's message. The email icon remains a direct fallback. With the placeholder key, the form shows the failure message without sending a request.
+
+After adding your key and deploying, submit a test from the production domain and check that the message arrives and Reply uses the sender's email. Automated checks use mocked responses; they do not verify inbox delivery. This redesign replaces the earlier unmerged FormSubmit proposal (PR #4); do not merge both implementations.
+
 ## Verify and review
 
 ```sh

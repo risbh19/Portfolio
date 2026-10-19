@@ -20,7 +20,13 @@ function textFiles(directory) {
 }
 
 try {
-  for (const path of ['dist/app.js', 'dist/content.js', 'scripts/serve.mjs', 'scripts/check.mjs']) {
+  for (const path of [
+    'dist/app.js',
+    'dist/contact.js',
+    'dist/content.js',
+    'scripts/serve.mjs',
+    'scripts/check.mjs',
+  ]) {
     const result = spawnSync(process.execPath, ['--check', join(root, path)], { encoding: 'utf8' });
     assert.equal(
       result.status,
@@ -28,6 +34,13 @@ try {
       `${path}: ${result.stderr || result.error || 'syntax check failed'}`,
     );
   }
+
+  const contactTests = spawnSync(
+    process.execPath,
+    ['--test', join(root, 'scripts/contact.test.mjs')],
+    { encoding: 'utf8' },
+  );
+  assert.equal(contactTests.status, 0, contactTests.stdout + contactTests.stderr);
 
   const html = read('dist/index.html');
   const ids = values(html, 'id');
