@@ -1,4 +1,4 @@
-/* Profile and project facts transcribed from the supplied résumé. */
+/* Facts from the supplied résumé; internship dates corrected by the owner. */
 window.PORTFOLIO = {
   name: 'Rishabh Pal',
   role: 'CSE STUDENT / SOFTWARE DEVELOPER',
@@ -7,10 +7,10 @@ window.PORTFOLIO = {
   intro:
     'I’m Rishabh, a Computer Science student building full-stack applications with Python, FastAPI and React. I care about how software works — and how reliably it keeps working.',
   about:
-    'I build across the stack, from role-based healthcare workflows to geospatial safety systems. Alongside my B.Tech in Computer Science, I work as a Software Testing Intern at R-Cube Green Technology LLP.',
+    'I build across the stack, from role-based healthcare workflows to geospatial safety systems. I’m pursuing my B.Tech in Computer Science and completed a one-month Software Testing Internship at R-Cube Green Technology LLP from June to July 2026.',
   aboutSecondary:
     'Development gives me a way to solve a problem. Testing helps me question the solution. My work brings both together through APIs, real-time systems and careful validation.',
-  status: 'Software Testing Intern · R-Cube',
+  status: 'B.Tech CSE student · RKGIT',
   focus: 'Full-stack development & API testing',
   socials: {
     linkedin: 'https://linkedin.com/in/rishabhpal19',
