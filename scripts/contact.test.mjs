@@ -71,7 +71,11 @@ function setup({
       );
     }
   }
-  runInNewContext(source.replace("'YOUR_WEB3FORMS_ACCESS_KEY';", `'${key}';`), {
+  const testSource = source.replace(
+    /const WEB3FORMS_ACCESS_KEY = '[^']*';/,
+    `const WEB3FORMS_ACCESS_KEY = '${key}';`,
+  );
+  runInNewContext(testSource, {
     document: { querySelector: (selector) => nodes[selector] },
     FormData: TestFormData,
     AbortController,
