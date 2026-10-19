@@ -33,6 +33,7 @@ CONTRIBUTING.md       Review and merge workflow
 ## Update content
 
 - Edit profile copy, email, social URLs, résumé path and project details in `dist/content.js`.
+- About copy supports `**bold phrases**` through its `data-emphasis` attribute. Keep its HTML fallback in sync when editing.
 - Edit experience, education, achievements, skills, headings and fallback link destinations in `dist/index.html`.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
 - Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes.

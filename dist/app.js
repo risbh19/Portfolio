@@ -13,7 +13,20 @@
   };
   $$('[data-content]').forEach((node) => {
     const value = config[node.dataset.content];
-    if (typeof value === 'string') node.textContent = value;
+    if (typeof value !== 'string') return;
+    if (!node.hasAttribute('data-emphasis')) {
+      node.textContent = value;
+      return;
+    }
+    // Support **bold phrases** in opted-in copy without interpreting HTML.
+    node.replaceChildren(
+      ...value.split(/(\*\*[^*]+\*\*)/g).map((part) => {
+        if (!part.startsWith('**') || !part.endsWith('**')) return part;
+        const strong = document.createElement('strong');
+        strong.textContent = part.slice(2, -2);
+        return strong;
+      }),
+    );
   });
   $$('[data-year]').forEach((node) => (node.textContent = new Date().getFullYear()));
   document.title = `${config.name.replace(/[\[\]]/g, '')} — Software Developer`;
