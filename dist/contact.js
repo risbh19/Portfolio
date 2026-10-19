@@ -1,5 +1,5 @@
 // Paste the access key for your receiving email here. This is a public client-side key.
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+const WEB3FORMS_ACCESS_KEY = 'c26c2bf5-def0-41c6-83bc-4c5adc22591b';
 
 (() => {
   'use strict';
