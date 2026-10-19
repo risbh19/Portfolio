@@ -4,6 +4,4 @@ coverage/
 .cache/
 work/
 outputs/
-.sites-runtime/
-.sites-checkout/
-.sites-checkout-*/
+.vercel/

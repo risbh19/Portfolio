@@ -14,12 +14,10 @@ Thumbs.db
 .vscode/
 *.log
 
-# Local previews, exports, and Sites working state
+# Local previews, exports, and Vercel project state
 work/
 outputs/
-.sites-runtime/
-.sites-checkout/
-.sites-checkout-*/
+.vercel/
 *.zip
 *.tar.gz
 
