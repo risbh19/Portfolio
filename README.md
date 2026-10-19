@@ -19,7 +19,7 @@ Open [http://127.0.0.1:4317](http://127.0.0.1:4317). Stop with `Ctrl+C`; set `PO
 dist/                 Tracked, hand-authored website source
   index.html          Layout, experience, education, skills and artwork
   content.js          Profile details, social links and project descriptions
-  app.js              Menu, animation, filters and project dialogs
+  app.js              Menu, animation, filters, project dialogs and contact subject
   style.css           Styles and responsive layout
   assets/             Portrait, favicon and supplied résumé PDF
 scripts/              Local preview and source verification
@@ -39,6 +39,14 @@ CONTRIBUTING.md       Review and merge workflow
 - The supplied résumé backs the project and profile facts. The project visuals are labelled illustrations. Actual product screenshots and CareFlow's repository/demo URL are still to be added.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
+
+## Contact form
+
+The conversation form collects a topic, name, reply email, subject and message. A normal HTTPS POST sends these fields to [FormSubmit](https://formsubmit.co/), which forwards submissions to `palrishabh989@gmail.com`. It works without JavaScript, API keys or a local backend. The `email` field sets the reply address; JavaScript adds the chosen topic and subject to the notification subject. The page discloses the delivery service and keeps a direct email fallback.
+
+**One-time activation:** submit a clearly labelled test from the deployed website, then open FormSubmit's activation email in the receiving inbox and confirm it (check Spam too). Complete any provider spam check yourself. Submit another test and confirm the full message arrives and Reply addresses the sender before considering email delivery verified. FormSubmit's own confirmation/error page handles the result; the portfolio does not claim a message was delivered before the provider accepts it.
+
+reCAPTCHA remains enabled by default, and the `_honey` field adds a spam trap. If changing the recipient, update `email` in `dist/content.js` and the form's HTML `action` fallback in `dist/index.html`, then activate the new destination. Visitor submissions pass through this third-party service; do not request secrets or sensitive documents in this form.
 
 ## Verify and review
 
@@ -67,7 +75,7 @@ After reviewing and merging the current pull request, import `risbh19/Portfolio`
 
 Only `dist/` is served. Development tooling runs locally and in GitHub Actions; deployment needs no package installation, build server or backend. Configuration follows the [Vercel configuration reference](https://vercel.com/docs/project-configuration/vercel-json).
 
-Google Fonts has system font fallbacks. Email links use the visitor's mail application.
+Google Fonts has system font fallbacks. Direct email links use the visitor's mail application; the contact form uses FormSubmit.
 
 ## Design reference
 

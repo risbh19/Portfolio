@@ -1144,6 +1144,215 @@ h3 {
 .contact-email:hover {
   color: var(--acid);
 }
+.conversation-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.4fr;
+  gap: clamp(40px, 7vw, 110px);
+  border-top: 1px solid #505346;
+  padding: 52px 0 68px;
+}
+.conversation-intro > .mono {
+  color: var(--acid);
+  font-size: 10px;
+  letter-spacing: 0.035em;
+}
+.conversation-intro h3 {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  margin: 22px 0;
+}
+.conversation-intro > p:not(.mono) {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 295px;
+  color: #b1b5a4;
+}
+.conversation-intro .conversation-aside {
+  margin-top: 40px;
+}
+.conversation-form {
+  scroll-margin-top: 35px;
+  min-width: 0;
+}
+.contact-trap {
+  display: none;
+}
+.topic-options {
+  border: 0;
+  padding: 0;
+  margin: 0 0 34px;
+  min-width: 0;
+}
+.topic-options legend,
+.contact-fields label > span {
+  font-size: 10px;
+  color: #c6c9bc;
+  letter-spacing: 0.035em;
+}
+.topic-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 17px;
+}
+.topic-choices label {
+  position: relative;
+  cursor: pointer;
+}
+.topic-choices input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.topic-choices span {
+  display: block;
+  border: 1px solid #777e65;
+  border-radius: 30px;
+  padding: 12px 17px;
+  font-size: 12px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.topic-choices input:checked + span {
+  background: var(--acid);
+  border-color: var(--acid);
+  color: var(--ink);
+}
+.topic-choices input:focus-visible + span {
+  outline: 2px solid var(--paper);
+  outline-offset: 4px;
+}
+.topic-choices label:hover span {
+  border-color: var(--acid);
+}
+.contact-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 24px;
+}
+.contact-fields label {
+  display: grid;
+  gap: 11px;
+  min-width: 0;
+}
+.contact-field-wide {
+  grid-column: 1 / -1;
+}
+.contact-fields input,
+.contact-fields textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #777e65;
+  border-radius: 0;
+  background: transparent;
+  color: var(--paper);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 9px 0 13px;
+}
+.contact-fields textarea {
+  resize: vertical;
+  min-height: 120px;
+  max-height: 450px;
+}
+.contact-fields input::placeholder,
+.contact-fields textarea::placeholder {
+  color: #a5a999;
+  opacity: 1;
+}
+.contact-fields input:focus-visible,
+.contact-fields textarea:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 5px;
+  border-color: var(--acid);
+}
+.contact-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 28px;
+}
+.contact-submit-row p,
+.contact-form-help {
+  font-size: 11px;
+  line-height: 1.75;
+  color: #b1b5a4;
+}
+.contact-submit-row p {
+  max-width: 310px;
+}
+.contact-submit-row a,
+.contact-form-help a {
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-shrink: 0;
+  background: var(--acid);
+  border: 1px solid var(--acid);
+  color: var(--ink);
+  padding: 16px 19px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.contact-submit:hover {
+  background: #e6f69c;
+}
+.contact-submit > span:last-child {
+  font-size: 22px;
+  line-height: 1;
+}
+.contact-form-help {
+  margin-top: 19px;
+}
+@media (max-width: 900px) {
+  .conversation-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 35px 0 45px;
+  }
+  .conversation-intro > p:not(.mono) {
+    max-width: 470px;
+  }
+  .conversation-intro .conversation-aside {
+    display: none;
+  }
+}
+@media (max-width: 550px) {
+  .contact-fields {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .contact-fields input,
+  .contact-fields textarea {
+    font-size: 16px;
+  }
+  .contact-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .contact-submit-row p {
+    max-width: none;
+  }
+  .topic-choices span {
+    padding: 12px 14px;
+  }
+}
 .site-footer {
   display: flex;
   align-items: center;
