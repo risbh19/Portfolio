@@ -346,26 +346,22 @@ h3 {
   border-left: 1px solid #a5b09c;
 }
 .wavesafe-art {
-  background: #343e38;
-  color: #eeede6;
+  background: #dce3e2;
+  color: var(--paper);
 }
-.coast-lines {
-  position: absolute;
-  inset: 0;
+.wavesafe-art img {
+  display: block;
   width: 100%;
   height: 100%;
-  color: #8d9b89;
-  opacity: 0.45;
-  z-index: -1;
+  object-fit: contain;
 }
-.wavesafe-title {
-  position: absolute;
-  top: 44%;
-  left: 9%;
-  font-size: clamp(32px, 4.4vw, 64px);
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  line-height: 1;
+.wavesafe-art .project-open {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ink);
 }
 .project-open {
   position: absolute;
@@ -1043,8 +1039,7 @@ dialog::backdrop {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
-  .careflow-title,
-  .wavesafe-title {
+  .careflow-title {
     font-size: clamp(36px, 8vw, 60px);
   }
   .art-label {
@@ -1100,8 +1095,7 @@ dialog::backdrop {
   .dialog-art .project-visual {
     aspect-ratio: 16 / 10;
   }
-  .dialog-art .careflow-title,
-  .dialog-art .wavesafe-title {
+  .dialog-art .careflow-title {
     font-size: clamp(30px, 8vw, 52px);
   }
   .dialog-art .art-label {

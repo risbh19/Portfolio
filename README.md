@@ -36,7 +36,7 @@ CONTRIBUTING.md       Review and merge workflow
 - Edit experience, education, achievements, skills, headings and fallback link destinations in `dist/index.html`.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
 - Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes.
-- The supplied résumé backs the project and profile facts. The project visuals are labelled illustrations. Actual product screenshots and CareFlow's repository/demo URL are still to be added.
+- The supplied résumé backs the project and profile facts. Wave-Safe uses the owner-supplied homepage screenshot. CareFlow uses a labelled illustration; its product screenshots and repository/demo URL are still to be added.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
 

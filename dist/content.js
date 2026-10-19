@@ -51,8 +51,7 @@ window.PORTFOLIO = {
         'Built a risk engine combining eight hazard features into a weighted logistic Safe / Caution / Unsafe score, with hard overrides for tsunami and storm-surge alerts. Integrated INCOIS, SACHET CAP and Open-Meteo connectors with Redis deduplication.',
       outcome:
         'Implemented a 12-state SOS dispatch model, PostGIS routing to eight responder roles, and Celery-driven escalation to a 112 fallback. The backend includes 60+ REST endpoints, OTP and JWT authentication, offline SOS queueing, and ten containerised services.',
-      visualNote:
-        'Original system illustration of the project. Product screenshots are still to be added.',
+      visualNote: 'WaveSafe homepage screenshot supplied by the project owner.',
       link: 'https://github.com/risbh19/waveSafe',
       linkLabel: 'VIEW SOURCE ON GITHUB',
     },
