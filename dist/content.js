@@ -5,11 +5,9 @@ window.PORTFOLIO = {
   location: 'RKGIT · Ghaziabad, India',
   email: 'palrishabh989@gmail.com',
   intro:
-    'I’m Rishabh, a Computer Science student building full-stack applications with Python, FastAPI and React. I care about how software works — and how reliably it keeps working.',
+    'I’m Rishabh, a Computer Science student building full-stack applications with Python, FastAPI and React.',
   about:
-    'I build across the stack, from role-based healthcare workflows to geospatial safety systems. I’m pursuing my B.Tech in Computer Science and completed a one-month Software Testing Internship at R-Cube Green Technology LLP from June to July 2026.',
-  aboutSecondary:
-    'Development gives me a way to solve a problem. Testing helps me question the solution. My work brings both together through APIs, real-time systems and careful validation.',
+    'I build applications that connect people and information, from healthcare workflows to coastal safety systems. My testing experience shapes how I approach APIs, edge cases and reliable software.',
   status: 'B.Tech CSE student · RKGIT',
   focus: 'Full-stack development & API testing',
   socials: {
@@ -19,7 +17,7 @@ window.PORTFOLIO = {
   resumeUrl: 'assets/Rishabh_Resume.pdf',
   projects: {
     careflow: {
-      title: 'CareFlow — care, connected.',
+      title: 'CareFlow',
       category: 'Full-stack · Healthcare',
       year: '2026',
       number: '01',
@@ -39,7 +37,7 @@ window.PORTFOLIO = {
       linkLabel: 'VIEW SOURCE',
     },
     wavesafe: {
-      title: 'Wave-Safe — signals to action.',
+      title: 'Wave-Safe',
       category: 'Backend · Public safety',
       year: '2026',
       number: '02',
@@ -53,8 +51,7 @@ window.PORTFOLIO = {
         'Built a risk engine combining eight hazard features into a weighted logistic Safe / Caution / Unsafe score, with hard overrides for tsunami and storm-surge alerts. Integrated INCOIS, SACHET CAP and Open-Meteo connectors with Redis deduplication.',
       outcome:
         'Implemented a 12-state SOS dispatch model, PostGIS routing to eight responder roles, and Celery-driven escalation to a 112 fallback. The backend includes 60+ REST endpoints, OTP and JWT authentication, offline SOS queueing, and ten containerised services.',
-      visualNote:
-        'Original system illustration of the project. Product screenshots are still to be added.',
+      visualNote: 'WaveSafe homepage screenshot supplied by the project owner.',
       link: 'https://github.com/risbh19/waveSafe',
       linkLabel: 'VIEW SOURCE ON GITHUB',
     },

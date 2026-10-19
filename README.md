@@ -19,7 +19,7 @@ Open [http://127.0.0.1:4317](http://127.0.0.1:4317). Stop with `Ctrl+C`; set `PO
 dist/                 Tracked, hand-authored website source
   index.html          Layout, experience, education, skills and artwork
   content.js          Profile details, social links and project descriptions
-  app.js              Menu, animation, filters and project dialogs
+  app.js              Navigation and project dialogs
   style.css           Styles and responsive layout
   assets/             Portrait, favicon and supplied résumé PDF
 scripts/              Local preview and source verification
@@ -35,8 +35,8 @@ CONTRIBUTING.md       Review and merge workflow
 - Edit profile copy, email, social URLs, résumé path and project details in `dist/content.js`.
 - Edit experience, education, achievements, skills, headings and fallback link destinations in `dist/index.html`.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
-- Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes. Update HTML filter categories and counts when changing projects.
-- The supplied résumé backs the project and profile facts. The project visuals are labelled illustrations. Actual product screenshots and CareFlow's repository/demo URL are still to be added.
+- Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes.
+- The supplied résumé backs the project and profile facts. Wave-Safe uses the owner-supplied homepage screenshot. CareFlow uses a labelled illustration; its product screenshots and repository/demo URL are still to be added.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
 
@@ -56,7 +56,7 @@ npm run check
 git diff --check
 ```
 
-The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check desktop/mobile layouts, keyboard navigation, filters, project dialogs and any changed links in the browser.
+The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check desktop/mobile layouts, keyboard navigation, experience/toolkit disclosures, project dialogs and any changed links in the browser.
 
 GitHub Actions runs verification on pull requests and pushes to `main`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and merge workflow. Keep `package-lock.json` with dependency changes; dependencies, local exports, environment files and `.vercel/` stay out of Git.
 
@@ -79,4 +79,4 @@ Google Fonts has system font fallbacks. Email links use the visitor's mail appli
 
 ## Design reference
 
-Inspired by the editorial palette and kinetic typography of [Content Architecture](https://www.contentarchitecture.dev/). Layout, copy, SVG/CSS illustrations and project compositions were created for this portfolio.
+Inspired by the editorial palette of [Content Architecture](https://www.contentarchitecture.dev/). Layout, copy, SVG/CSS illustrations and project compositions were created for this portfolio.

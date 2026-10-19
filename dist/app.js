@@ -32,11 +32,7 @@
     const project = config.projects[card.dataset.project];
     if (!project) return;
     $('h3 button', card).textContent = project.title;
-    $('.project-type', card).replaceChildren(
-      document.createTextNode(project.category.toUpperCase()),
-      document.createElement('br'),
-      document.createTextNode(project.year),
-    );
+    $('.project-type', card).textContent = project.category.toUpperCase();
   });
 
   const menuButton = $('.menu-toggle');
@@ -61,55 +57,6 @@
       menuButton.focus();
     }
   });
-
-  const art = $('.signal-art');
-  const motionButton = $('.motion-toggle');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = reducedMotion.matches;
-  function syncMotion() {
-    art.classList.toggle('paused', paused);
-    motionButton.setAttribute('aria-pressed', String(paused));
-    motionButton.setAttribute(
-      'aria-label',
-      paused ? 'Play orbit animation' : 'Pause orbit animation',
-    );
-    motionButton.innerHTML = paused
-      ? 'PLAY <span aria-hidden="true">▷</span>'
-      : 'PAUSE <span aria-hidden="true">Ⅱ</span>';
-  }
-  syncMotion();
-  motionButton.addEventListener('click', () => {
-    paused = !paused;
-    syncMotion();
-  });
-  art.addEventListener('pointermove', (event) => {
-    if (reducedMotion.matches || event.pointerType === 'touch') return;
-    const rect = art.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
-    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 12;
-    $('.orbit-svg').style.transform = `translate(${x}px, ${y}px) rotate(${x / 3}deg)`;
-  });
-  art.addEventListener('pointerleave', () => {
-    $('.orbit-svg').style.transform = '';
-  });
-
-  $$('.filter').forEach((button) =>
-    button.addEventListener('click', () => {
-      $$('.filter').forEach((b) => {
-        const active = b === button;
-        b.classList.toggle('active', active);
-        b.setAttribute('aria-pressed', String(active));
-      });
-      let count = 0;
-      $$('.project').forEach((project) => {
-        const visible =
-          button.dataset.filter === 'all' || project.dataset.category === button.dataset.filter;
-        project.hidden = !visible;
-        if (visible) count++;
-      });
-      $('#visible-count').textContent = `(${String(count).padStart(2, '0')})`;
-    }),
-  );
 
   const dialog = $('#detail-dialog');
   const dialogContent = $('#dialog-content');
