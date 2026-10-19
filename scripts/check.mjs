@@ -73,10 +73,15 @@ try {
       'category',
       'year',
       'number',
+      'role',
+      'stack',
+      'summary',
       'brief',
       'contribution',
       'outcome',
+      'visualNote',
       'link',
+      'linkLabel',
     ]) {
       assert.equal(
         typeof config.projects[id][field],

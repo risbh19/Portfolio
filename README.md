@@ -1,8 +1,10 @@
-# Independent portfolio — Edition 001
+# Rishabh Pal — Portfolio
 
-A minimal, responsive portfolio built with HTML, CSS, and JavaScript. It includes original SVG artwork, an interactive typographic orbit, project filters, project dialogs, a mobile menu, and reduced-motion support.
+A minimal, responsive portfolio for Rishabh Pal, a Computer Science student, software developer, and Software Testing Intern. Built with HTML, CSS, and JavaScript, with original SVG/CSS illustrations, an interactive typographic orbit, project filters, project dialogs, a mobile menu, and reduced-motion support.
 
-**Current content is a template:** profile details, portrait, résumé, and contact links are placeholders. Forma, Offgrid, and Daylight are illustrative concepts, not completed client work. Replace them with your own verified work before presenting the site as a personal portfolio.
+Profile, CareFlow and Wave-Safe project details, internship, education, skills, and achievements were transcribed from the supplied résumé. GitHub, LinkedIn, email, and the bundled résumé link are configured. Project descriptions represent résumé-reported implementations; they do not imply a public production deployment.
+
+**Still to add:** actual product screenshots and a repository or demo URL for CareFlow. The supplied portrait is included. Project visuals are original architecture/system illustrations, clearly labelled as illustrations. The Wave-Safe card links to its source repository.
 
 ## Quick start
 
@@ -25,7 +27,9 @@ dist/
   style.css               Visual styles, responsive layout, and motion
   content.js              Editable profile and project details
   app.js                  Navigation, filters, dialogs, and interactions
-  assets/mark.svg         Original favicon; add real portfolio assets here
+  assets/mark.svg         Original R monogram favicon
+  assets/profile.png      Supplied personal portrait
+  assets/Rishabh_Resume.pdf  Supplied résumé, served by the résumé controls
 scripts/
   serve.mjs               Local static preview server
   check.mjs               Source and content consistency checks
@@ -44,7 +48,7 @@ package-lock.json         Reproducible dependency versions
 
 | Change                                                                    | File                                 |
 | ------------------------------------------------------------------------- | ------------------------------------ |
-| Name, role, location, email, intro, about, status, interests              | `dist/content.js`                    |
+| Name, role, location, email, intro, about, status, focus                  | `dist/content.js`                    |
 | Social links and résumé URL                                               | `dist/content.js`                    |
 | Project titles, categories, years, briefs, contributions, outcomes, links | `dist/content.js`                    |
 | Portrait, project artwork, page sections                                  | `dist/index.html` and `dist/assets/` |
@@ -52,11 +56,11 @@ package-lock.json         Reproducible dependency versions
 | Menus, filters, dialogs, and other behavior                               | `dist/app.js`                        |
 | Default page title, description, and static headings                      | `dist/index.html`                    |
 
-Replace bracketed profile values in `content.js`. Use complete `https://` social URLs and a real email address. `resumeUrl` accepts a web URL or a relative asset path such as `assets/resume.pdf`. Contact, social, and résumé controls display placeholder states until details are supplied. The document title updates from the configured name.
+Keep profile and project facts in `content.js` current. The `focus` and `aboutSecondary` fields hold the current technical focus and supporting about text. Experience, education, achievements, skill groups, static fallback copy, and page headings are in `index.html`. Update the supplied PDF in `dist/assets/` whenever the résumé changes. `resumeUrl` accepts a web URL or a relative asset path. The document title updates from the configured name.
 
-Project keys (`forma`, `offgrid`, `daylight`) must match their `data-project` cards and `data-open-project` buttons in `index.html`. When adding or removing projects, update these together. Filter categories and filter counts are defined in the HTML; update those too. The display category in `content.js` is independent of the filter category.
+Project keys (`careflow`, `wavesafe`) must match their `data-project` cards and `data-open-project` buttons in `index.html`. When adding or removing projects, update these together. Filter categories and filter counts are defined in the HTML; update those too. The display category in `content.js` is independent of the filter category. Each project also supplies its role, stack, summary, illustration note, and source-link label for the detail dialog.
 
-Replace the concept artwork and portrait with your own assets. When adding real projects, update the concept labels in `index.html` and the project-dialog notice in `app.js` so the copy accurately describes the work.
+Replace illustrative project visuals with real screenshots when available. Keep illustration/screenshot labels accurate. Leave an unknown URL empty rather than inventing a link; the project dialog displays a clear missing-link note.
 
 ## Verify changes
 
