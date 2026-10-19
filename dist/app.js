@@ -3,7 +3,6 @@
   const config = window.PORTFOLIO;
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const isPlaceholder = (value) => !value || /[\[\]]/.test(value);
   const safeUrl = (value) => {
     try {
       const u = new URL(value, location.href);
@@ -18,6 +17,17 @@
   });
   $$('[data-year]').forEach((node) => (node.textContent = new Date().getFullYear()));
   document.title = `${config.name.replace(/[\[\]]/g, '')} — Software Developer`;
+  $$('[data-email-link]').forEach((link) => {
+    link.href = `mailto:${config.email}`;
+  });
+  $$('[data-social]').forEach((link) => {
+    const url = safeUrl(config.socials[link.dataset.social]);
+    if (url) link.href = url;
+  });
+  $$('[data-resume-link]').forEach((link) => {
+    const url = safeUrl(config.resumeUrl);
+    if (url) link.href = url;
+  });
   $$('[data-project]').forEach((card) => {
     const project = config.projects[card.dataset.project];
     if (!project) return;
@@ -198,48 +208,4 @@
   $$('[data-open-project]').forEach((button) =>
     button.addEventListener('click', () => openProject(button.dataset.openProject)),
   );
-
-  let toastTimeout;
-  function toast(message) {
-    const node = $('.toast');
-    node.textContent = message;
-    node.hidden = false;
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => (node.hidden = true), 4200);
-  }
-  function contact() {
-    if (!isPlaceholder(config.email)) {
-      location.href = `mailto:${config.email}`;
-      return;
-    }
-    openDialog(
-      '04 / SAY HELLO',
-      `<div class="dialog-body"><p class="dialog-eyebrow mono">CONTACT DETAILS / PLACEHOLDER</p><h2 id="dialog-title">Let's make<br>something good.</h2><span class="contact-dialog-email">${esc(config.email)}</span><p class="dialog-notice">Your contact details belong here. Once your real email address is added, the email buttons will open a message to you.</p><p class="about-secondary">A project, a collaboration, or just a conversation. This is where it starts.</p></div>`,
-    );
-  }
-  $$('[data-open-contact], [data-email-action]').forEach((button) =>
-    button.addEventListener('click', contact),
-  );
-  $$('[data-social]').forEach((button) =>
-    button.addEventListener('click', () => {
-      const value = config.socials[button.dataset.social];
-      const url = value && safeUrl(value);
-      if (url) window.open(url, '_blank', 'noopener,noreferrer');
-      else
-        toast(
-          `${button.dataset.social[0].toUpperCase() + button.dataset.social.slice(1)} profile — link to be added.`,
-        );
-    }),
-  );
-  $('[data-open-resume]').addEventListener('click', () => {
-    const url = config.resumeUrl && safeUrl(config.resumeUrl);
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
-      return;
-    }
-    openDialog(
-      'ABOUT / THE LONGER STORY',
-      `<div class="dialog-body"><p class="dialog-eyebrow mono">RÉSUMÉ / PLACEHOLDER</p><h2 id="dialog-title">${esc(config.name)}</h2><p class="dialog-notice">Your résumé will live here. The sections below are ready for your actual details.</p><div class="resume-row"><h3>ROLE & LOCATION</h3><p>${esc(config.role)} · ${esc(config.location)}</p></div><div class="resume-row"><h3>EXPERIENCE</h3><p>[Your role] · [Company / Independent]<br>[Start date — End date]<br>[A short description of the work you did.]</p></div><div class="resume-row"><h3>EDUCATION</h3><p>[Course or degree] · [Institution]<br>[Year]</p></div><div class="resume-row"><h3>SKILLS & TOOLS</h3><p>[Add your actual skills, tools, and areas of interest.]</p></div><div class="resume-row"><h3>CONTACT</h3><p>${esc(config.email)}</p></div></div>`,
-    );
-  });
 })();
