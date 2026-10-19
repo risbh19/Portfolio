@@ -1,52 +1,62 @@
-/* Replace the bracketed fields with your own details. No build step needed. */
+/* Profile and project facts transcribed from the supplied résumé. */
 window.PORTFOLIO = {
-  name: '[Your Name]',
-  role: '[Your Role]',
-  location: '[Your City, Country]',
-  email: '[your@email.com]',
+  name: 'Rishabh Pal',
+  role: 'CSE STUDENT / SOFTWARE DEVELOPER',
+  location: 'RKGIT · Ghaziabad, India',
+  email: 'palrishabh989@gmail.com',
   intro:
-    'I turn a little curiosity into thoughtful things. This is a collection of what I make, how I think, and what comes next.',
+    'I’m Rishabh, a Computer Science student building full-stack applications with Python, FastAPI and React. I care about how software works — and how reliably it keeps working.',
   about:
-    "I'm a [your role] based in [your city]. I like asking better questions, connecting unexpected dots, and making things feel considered.",
-  status: '[Your current focus]',
-  interests: '[A few things you love]',
-  socials: { linkedin: '', github: '', instagram: '' },
-  resumeUrl: '',
+    'I build across the stack, from role-based healthcare workflows to geospatial safety systems. Alongside my B.Tech in Computer Science, I work as a Software Testing Intern at R-Cube Green Technology LLP.',
+  aboutSecondary:
+    'Development gives me a way to solve a problem. Testing helps me question the solution. My work brings both together through APIs, real-time systems and careful validation.',
+  status: 'Software Testing Intern · R-Cube',
+  focus: 'Full-stack development & API testing',
+  socials: {
+    linkedin: 'https://linkedin.com/in/rishabhpal19',
+    github: 'https://github.com/risbh19',
+  },
+  resumeUrl: 'assets/Rishabh_Resume.pdf',
   projects: {
-    forma: {
-      title: 'Forma — finding the balance.',
-      category: 'Identity & art direction',
+    careflow: {
+      title: 'CareFlow — care, connected.',
+      category: 'Full-stack · Healthcare',
       year: '2026',
-      imageClass: 'forma-art',
       number: '01',
-      brief: '[Add the project brief: what needed to change, who it was for, and why it mattered.]',
+      role: 'Full-stack development',
+      stack: 'Next.js 14 · FastAPI · MongoDB Atlas · JWT · Groq · SSE',
+      summary:
+        'A hospital management platform connecting Doctor, Nurse and Patient portals through role-based access and real-time updates.',
+      brief:
+        'Build a unified hospital workflow with separate Doctor, Nurse and Patient portals, keeping access isolated while shared information stays in sync.',
       contribution:
-        '[Add your role, responsibilities, collaborators, and the work you personally contributed.]',
+        'Built the Next.js 14 and FastAPI application on MongoDB Atlas, with JWT-gated role isolation and Server-Sent Events for cross-portal updates. Implemented the doctor-to-nurse task lifecycle, timestamped completion and task immutability after assignment.',
       outcome:
-        '[Add the final result and any verified outcomes. Replace the concept artwork with images of your own work.]',
+        'The implementation includes paperless prescriptions mirrored to the Patient portal, admission-to-discharge history, and Llama 3.1 8B integration through Groq for clinical logic.',
+      visualNote:
+        'Original architecture illustration of the project. Product screenshots are still to be added.',
       link: '',
+      linkLabel: 'VIEW SOURCE',
     },
-    offgrid: {
-      title: 'Offgrid — a different route.',
-      category: 'Editorial & identity',
+    wavesafe: {
+      title: 'Wave-Safe — signals to action.',
+      category: 'Backend · Public safety',
       year: '2026',
-      imageClass: 'offgrid-art',
       number: '02',
-      brief: '[Add the story behind this project and the problem you set out to solve.]',
-      contribution: '[Add your role and the decisions that shaped the final direction.]',
-      outcome: '[Add the finished work and what you learned along the way.]',
-      link: '',
-    },
-    daylight: {
-      title: 'Daylight — space to focus.',
-      category: 'Digital experience',
-      year: '2026',
-      imageClass: 'daylight-art',
-      number: '03',
-      brief: '[Add the project context, audience, and the experience you wanted to create.]',
-      contribution: '[Add your process: research, design, development, or other contributions.]',
-      outcome: '[Add final screens, an actual live link, and verified results when available.]',
-      link: '',
+      role: 'Backend & system development',
+      stack: 'FastAPI · React · PostgreSQL / PostGIS · Redis · Celery · Docker',
+      summary:
+        'A coastal risk and SOS system bringing hazard signals, geospatial routing and escalation workflows into one platform.',
+      brief:
+        'Connect coastal hazard information with a risk score and a jurisdiction-aware SOS dispatch workflow, including offline queueing and escalation logic.',
+      contribution:
+        'Built a risk engine combining eight hazard features into a weighted logistic Safe / Caution / Unsafe score, with hard overrides for tsunami and storm-surge alerts. Integrated INCOIS, SACHET CAP and Open-Meteo connectors with Redis deduplication.',
+      outcome:
+        'Implemented a 12-state SOS dispatch model, PostGIS routing to eight responder roles, and Celery-driven escalation to a 112 fallback. The backend includes 60+ REST endpoints, OTP and JWT authentication, offline SOS queueing, and ten containerised services.',
+      visualNote:
+        'Original system illustration of the project. Product screenshots are still to be added.',
+      link: 'https://github.com/risbh19/waveSafe',
+      linkLabel: 'VIEW SOURCE ON GITHUB',
     },
   },
 };

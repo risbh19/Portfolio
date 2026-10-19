@@ -17,7 +17,7 @@
     if (typeof value === 'string') node.textContent = value;
   });
   $$('[data-year]').forEach((node) => (node.textContent = new Date().getFullYear()));
-  document.title = `${config.name.replace(/[\[\]]/g, '')} — Independent Portfolio`;
+  document.title = `${config.name.replace(/[\[\]]/g, '')} — Software Developer`;
   $$('[data-project]').forEach((card) => {
     const project = config.projects[card.dataset.project];
     if (!project) return;
@@ -144,7 +144,37 @@
     if (!project) return;
     openDialog(
       `SELECTED WORK / ${project.number}`,
-      `<div class="dialog-body"><p class="dialog-eyebrow mono">CONCEPT PLACEHOLDER / ${esc(project.category.toUpperCase())}</p><h2 id="dialog-title">${esc(project.title)}</h2><p class="dialog-notice">An original visual concept created for this portfolio layout. Replace it with your own project, images, and story. It does not represent completed client work.</p><div class="dialog-art" aria-hidden="true"></div><dl class="dialog-facts"><div><dt>DISCIPLINE</dt><dd>${esc(project.category)}</dd></div><div><dt>YEAR</dt><dd>${esc(project.year)}</dd></div><div><dt>YOUR ROLE</dt><dd>[Add your contribution]</dd></div></dl><section class="case-section"><h3>THE STARTING POINT</h3><p>${esc(project.brief)}</p></section><section class="case-section"><h3>MY CONTRIBUTION</h3><p>${esc(project.contribution)}</p></section><section class="case-section"><h3>THE OUTCOME</h3><p>${esc(project.outcome)}</p></section>${safeUrl(project.link) && project.link ? `<a class="split-button" href="${esc(safeUrl(project.link))}" target="_blank" rel="noopener noreferrer"><span>VISIT PROJECT</span><span>↗</span></a>` : ''}</div>`,
+      /* HTML */ `
+        <div class="dialog-body">
+          <p class="dialog-eyebrow mono"
+            >DEVELOPMENT PROJECT / ${esc(project.category.toUpperCase())}</p
+          >
+          <h2 id="dialog-title">${esc(project.title)}</h2>
+          <p class="project-intro">${esc(project.summary)}</p>
+          <div class="dialog-art" aria-hidden="true"></div>
+          <p class="visual-note mono">${esc(project.visualNote)}</p>
+          <dl class="dialog-facts">
+            <div><dt>DISCIPLINE</dt><dd>${esc(project.category)}</dd></div>
+            <div><dt>YEAR</dt><dd>${esc(project.year)}</dd></div>
+            <div><dt>MY ROLE</dt><dd>${esc(project.role)}</dd></div>
+          </dl>
+          <section class="case-section"><h3>THE STACK</h3><p>${esc(project.stack)}</p></section>
+          <section class="case-section"
+            ><h3>THE STARTING POINT</h3><p>${esc(project.brief)}</p></section
+          >
+          <section class="case-section"
+            ><h3>WHAT I BUILT</h3><p>${esc(project.contribution)}</p></section
+          >
+          <section class="case-section"
+            ><h3>THE IMPLEMENTATION</h3><p>${esc(project.outcome)}</p></section
+          >
+          ${
+            project.link && safeUrl(project.link)
+              ? `<a class="split-button" href="${esc(safeUrl(project.link))}" target="_blank" rel="noopener noreferrer"><span>${esc(project.linkLabel)}</span><span>↗</span></a>`
+              : '<p class="link-placeholder mono">REPOSITORY / LIVE DEMO LINK — TO BE ADDED</p>'
+          }
+        </div>
+      `,
     );
     const source = $(`[data-project="${id}"] .project-visual`);
     const clone = source.cloneNode(true);
