@@ -20,6 +20,24 @@
   $$('[data-email-link]').forEach((link) => {
     link.href = `mailto:${config.email}`;
   });
+  const contactForm = $('#conversation-form');
+  contactForm.action = `https://formsubmit.co/${config.email}`;
+  contactForm.addEventListener('submit', (event) => {
+    const fields = ['name', 'subject', 'message'].map((name) =>
+      contactForm.elements.namedItem(name),
+    );
+    fields.forEach((field) => {
+      field.value = field.value.trim();
+    });
+    if (!contactForm.reportValidity()) {
+      event.preventDefault();
+      return;
+    }
+    const topic = contactForm.elements.namedItem('topic').value;
+    contactForm.elements.namedItem('_subject').value =
+      `Portfolio / ${topic} — ${contactForm.elements.namedItem('subject').value}`;
+    // Keep a normal POST so FormSubmit can show its spam check and delivery result.
+  });
   $$('[data-social]').forEach((link) => {
     const url = safeUrl(config.socials[link.dataset.social]);
     if (url) link.href = url;
