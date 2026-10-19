@@ -97,11 +97,11 @@ try {
     assert.equal(typeof config.socials[key], 'string', `Missing social field: ${key}`);
   }
   assert.equal(typeof config.resumeUrl, 'string', 'resumeUrl must be a string.');
-  assert.equal(
-    JSON.parse(read('.openai/hosting.json')).static.directory,
-    'dist',
-    'Static hosting must point to dist.',
-  );
+  const hosting = JSON.parse(read('vercel.json'));
+  assert.equal(hosting.outputDirectory, 'dist', 'Vercel must serve the tracked dist directory.');
+  assert.equal(hosting.framework, null, 'Use the Other preset for this static site.');
+  assert.equal(hosting.buildCommand, '', 'This static site does not require a build.');
+  assert.equal(hosting.installCommand, '', 'Deployment does not require package installation.');
 
   const files = [
     ...textFiles(dist),
