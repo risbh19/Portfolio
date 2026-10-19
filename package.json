@@ -1,0 +1,23 @@
+{
+  "name": "independent-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A minimal, responsive portfolio with animated typography and original visuals.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/risbh19/Portfolio.git"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "node scripts/check.mjs && prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

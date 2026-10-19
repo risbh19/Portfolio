@@ -1,0 +1,26 @@
+# Local dependencies and tools
+node_modules/
+.cache/
+.npm/
+coverage/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Local previews, exports, and Sites working state
+work/
+outputs/
+.sites-runtime/
+.sites-checkout/
+.sites-checkout-*/
+*.zip
+*.tar.gz
+
+# dist/ contains the hand-authored website. Keep it tracked.
