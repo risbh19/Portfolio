@@ -1,6 +1,6 @@
 # Rishabh Pal — Portfolio
 
-A responsive software development portfolio built with HTML, CSS and JavaScript. Includes CareFlow and Wave-Safe project details, experience, education, skills, achievements, a personal portrait and a downloadable résumé.
+A static software development portfolio built with HTML, CSS and vanilla JavaScript. The page flows from intro and About to technical skills, experience, education, achievements, projects and contact. Content is visible without accordions, filters, popups, animations or live activity widgets. The contact form remains functional.
 
 ## Run locally
 
@@ -19,7 +19,9 @@ Open [http://127.0.0.1:4317](http://127.0.0.1:4317). Stop with `Ctrl+C`; set `PO
 dist/                 Tracked, hand-authored website source
   index.html          Layout, experience, education, skills and artwork
   content.js          Profile details, social links and project descriptions
-  app.js              Navigation and project dialogs
+  careflow.html       Static CareFlow project details
+  wavesafe.html       Static Wave-Safe project details
+  app.js              Profile, link and project text synchronization
   style.css           Styles and responsive layout
   assets/             Portrait, favicon and supplied résumé PDF
 scripts/              Local preview and source verification
@@ -32,14 +34,14 @@ CONTRIBUTING.md       Review and merge workflow
 
 ## Update content
 
-- Edit profile copy, email, social URLs, résumé path and project details in `dist/content.js`.
+- Edit profile copy, email, social URLs, résumé path and project details in `dist/content.js`. Keep the corresponding project HTML fallbacks aligned when changing project copy.
 - Intro and About copy support `**bold phrases**` through their `data-emphasis` attributes. Keep their HTML fallbacks in sync when editing.
 - Edit experience, education, achievements, skills, headings and fallback link destinations in `dist/index.html`.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
-- Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes.
+- Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` cards, `data-project-page` bodies and the native project page links. Use `data-project-field` for configured case-study text.
 - The supplied résumé backs the project and profile facts. Wave-Safe uses the owner-supplied homepage screenshot. CareFlow uses a labelled illustration; its product screenshots and repository/demo URL are still to be added.
 
-Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
+Navigation, project pages, email, social and résumé controls are normal links. All portfolio content is present in HTML; JavaScript only synchronizes configured copy/links and handles the contact form. No activity data is fetched on page load.
 
 ## Contact form setup
 
@@ -57,7 +59,7 @@ npm run check
 git diff --check
 ```
 
-The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check desktop/mobile layouts, keyboard navigation, experience/toolkit disclosures, project dialogs and any changed links in the browser.
+The checks validate JavaScript syntax, profile/project mappings, all HTML pages and their local links/anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check desktop/mobile layouts, keyboard navigation, static project pages and any changed links in the browser.
 
 GitHub Actions runs verification on pull requests and pushes to `main`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and merge workflow. Keep `package-lock.json` with dependency changes; dependencies, local exports, environment files and `.vercel/` stay out of Git.
 
@@ -81,3 +83,5 @@ Google Fonts has system font fallbacks. Email links use the visitor's mail appli
 ## Design reference
 
 Inspired by the editorial palette of [Content Architecture](https://www.contentarchitecture.dev/). Layout, copy, SVG/CSS illustrations and project compositions were created for this portfolio.
+
+Section coverage references [Shubhanshu Singh's portfolio](https://www.shubhanshu10.me/), adapted into a compact static structure using Rishabh's own content and existing visual identity.

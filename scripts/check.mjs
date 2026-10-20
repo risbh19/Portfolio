@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { isAbsolute, join, relative, resolve } from 'node:path';
+import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
@@ -43,10 +43,6 @@ try {
   assert.equal(contactTests.status, 0, contactTests.stdout + contactTests.stderr);
 
   const html = read('dist/index.html');
-  const ids = values(html, 'id');
-  assert.equal(new Set(ids).size, ids.length, 'HTML IDs must be unique.');
-  assert.equal((html.match(/<h1\b/g) || []).length, 1, 'The page must have one h1.');
-  assert.ok(ids.includes('main'), 'The main content anchor is missing.');
   const scripts = values(html, 'src');
   assert.ok(scripts.includes('content.js'), 'The content script is missing.');
   assert.ok(
@@ -54,16 +50,33 @@ try {
     'Load content.js before app.js.',
   );
 
-  for (const url of [...values(html, 'href'), ...values(html, 'src')]) {
-    if (!url || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(url)) continue;
-    if (url.startsWith('#')) {
-      assert.ok(ids.includes(url.slice(1)), `Missing anchor: ${url}`);
-      continue;
+  for (const pagePath of textFiles(dist).filter((path) => path.endsWith('.html'))) {
+    const page = readFileSync(pagePath, 'utf8');
+    const ids = values(page, 'id');
+    const label = relative(dist, pagePath);
+    assert.equal(new Set(ids).size, ids.length, `${label}: HTML IDs must be unique.`);
+    assert.equal((page.match(/<h1\b/g) || []).length, 1, `${label}: must have one h1.`);
+    assert.ok(ids.includes('main'), `${label}: the main content anchor is missing.`);
+    for (const url of [...values(page, 'href'), ...values(page, 'src')]) {
+      if (!url || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(url)) continue;
+      const [local, fragment] = url.split('#');
+      const path = local
+        ? resolve(dirname(pagePath), decodeURIComponent(local.split('?')[0]))
+        : pagePath;
+      const localPath = relative(dist, path);
+      assert.ok(
+        !localPath.startsWith('..') && !isAbsolute(localPath),
+        `Asset outside dist: ${url}`,
+      );
+      assert.ok(
+        existsSync(path) && statSync(path).isFile(),
+        `${label}: missing local file: ${url}`,
+      );
+      if (fragment) {
+        const targetIds = values(readFileSync(path, 'utf8'), 'id');
+        assert.ok(targetIds.includes(fragment), `${label}: missing anchor: ${url}`);
+      }
     }
-    const path = resolve(dist, decodeURIComponent(url.split(/[?#]/)[0]));
-    const localPath = relative(dist, path);
-    assert.ok(!localPath.startsWith('..') && !isAbsolute(localPath), `Asset outside dist: ${url}`);
-    assert.ok(existsSync(path) && statSync(path).isFile(), `Missing local asset: ${url}`);
   }
 
   const context = { window: {} };
@@ -103,8 +116,17 @@ try {
       );
     }
   }
-  for (const id of values(html, 'data-open-project')) {
-    assert.ok(projectIds.includes(id), `Project button has no matching card: ${id}`);
+  for (const id of projectIds) {
+    const page = read(`dist/${id}.html`);
+    assert.ok(html.includes(`href="${id}.html"`), `Project has no native page link: ${id}`);
+    assert.deepEqual(values(page, 'data-project-page'), [id], `Project page mapping: ${id}`);
+    for (const field of values(page, 'data-project-field')) {
+      assert.equal(
+        typeof config.projects[id][field],
+        'string',
+        `Unknown project field: ${id}.${field}`,
+      );
+    }
   }
   for (const key of values(html, 'data-social')) {
     assert.equal(typeof config.socials[key], 'string', `Missing social field: ${key}`);
