@@ -5,9 +5,9 @@ window.PORTFOLIO = {
   location: 'RKGIT · Ghaziabad, India',
   email: 'palrishabh989@gmail.com',
   intro:
-    "I'm Rishabh, a CSE student building **full-stack web applications** with React, Next.js and FastAPI. I practise **data structures and algorithms** in C++ and Python, bringing a problem-solving mindset to the products I build.",
+    "I'm Rishabh, a CSE student building **full-stack web applications** with React, Next.js and FastAPI. I practise **competitive programming** in **C++**, my preferred language for contests and problem solving.",
   about:
-    "I'm a **CSE student at RKGIT** who enjoys connecting frontend interfaces, REST APIs and databases into useful products. My projects cover authentication, role-based access and real-time workflows. Alongside development, I work on **competitive programming and DSA**, with attention to efficient approaches, complexity and edge cases.",
+    "I'm a **CSE student at RKGIT** who enjoys connecting frontend interfaces, REST APIs and databases into useful products. My projects cover authentication, role-based access and real-time workflows. Alongside development, I practise **competitive programming in C++**, with attention to efficient approaches, complexity and edge cases.",
   status: 'B.Tech CSE student · RKGIT',
   focus: 'Full-stack development & competitive programming',
   socials: {

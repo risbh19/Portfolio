@@ -1,6 +1,6 @@
 # Rishabh Pal — Portfolio
 
-A responsive full-stack development and problem-solving portfolio built with HTML, CSS and JavaScript. Includes CareFlow and Wave-Safe project details, LeetCode/Codeforces/CodeChef profiles, a GitHub source link to College Forum, experience, education, skills, achievements, a personal portrait and a downloadable résumé. The original palette, typography, artwork and responsive styles are preserved.
+A responsive full-stack development and competitive programming portfolio built with HTML, CSS and JavaScript, with C++ as the preferred language for contests and problem solving. Includes CareFlow and Wave-Safe project details, LeetCode/Codeforces/CodeChef profiles, a GitHub source link to College Forum, experience, education, skills, achievements, a personal portrait and a downloadable résumé. The original palette, typography, artwork and responsive styles are preserved.
 
 ## Run locally
 
