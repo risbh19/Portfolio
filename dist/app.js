@@ -29,7 +29,7 @@
     );
   });
   $$('[data-year]').forEach((node) => (node.textContent = new Date().getFullYear()));
-  document.title = `${config.name.replace(/[\[\]]/g, '')} — Software Developer`;
+  document.title = `${config.name.replace(/[\[\]]/g, '')} — Full-Stack Developer & Problem Solver`;
   $$('[data-email-link]').forEach((link) => {
     link.href = `mailto:${config.email}`;
   });
