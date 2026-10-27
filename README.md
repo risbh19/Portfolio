@@ -1,6 +1,6 @@
 # Rishabh Pal — Portfolio
 
-A responsive software development portfolio built with HTML, CSS and JavaScript. Includes CareFlow and Wave-Safe project details, experience, education, skills, achievements, a personal portrait and a downloadable résumé.
+A responsive full-stack development and problem-solving portfolio built with HTML, CSS and JavaScript. Includes CareFlow and Wave-Safe project details, LeetCode/Codeforces/CodeChef profiles, a GitHub source link to College Forum, experience, education, skills, achievements, a personal portrait and a downloadable résumé. The original palette, typography, artwork and responsive styles are preserved.
 
 ## Run locally
 
@@ -17,7 +17,7 @@ Open [http://127.0.0.1:4317](http://127.0.0.1:4317). Stop with `Ctrl+C`; set `PO
 
 ```text
 dist/                 Tracked, hand-authored website source
-  index.html          Layout, experience, education, skills and artwork
+  index.html          Layout, coding profiles, experience, skills and artwork
   content.js          Profile details, social links and project descriptions
   app.js              Navigation and project dialogs
   style.css           Styles and responsive layout
@@ -34,10 +34,11 @@ CONTRIBUTING.md       Review and merge workflow
 
 - Edit profile copy, email, social URLs, résumé path and project details in `dist/content.js`.
 - Intro and About copy support `**bold phrases**` through their `data-emphasis` attributes. Keep their HTML fallbacks in sync when editing.
-- Edit experience, education, achievements, skills, headings and fallback link destinations in `dist/index.html`.
+- Edit experience, education, achievements, skills, coding profile labels/handles, headings and fallback link destinations in `dist/index.html`.
+- Coding profile destinations live alongside GitHub and LinkedIn in `socials` in `dist/content.js`. Keep their HTML fallbacks in sync. Handles come from the owner's GitHub profile; ratings and problem counts are not hard-coded.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
 - Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes.
-- The supplied résumé backs the project and profile facts. Wave-Safe uses the owner-supplied homepage screenshot. CareFlow uses a labelled illustration; its product screenshots and repository/demo URL are still to be added.
+- The supplied résumé and the owner's GitHub profile back the project and profile facts. Wave-Safe uses the owner-supplied homepage screenshot and links to a private repository. CareFlow is a synthetic-data prototype with a public source link and a labelled illustration; its product screenshots and live demo URL are still to be added.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
 
