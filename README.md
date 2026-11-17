@@ -1,8 +1,34 @@
-# Rishabh Pal — Portfolio
+<div align="center">
+
+# Rishabh Pal · Portfolio
+
+**Projects, engineering work and competitive programming in one place.**
 
 A responsive full-stack development and competitive programming portfolio built with HTML, CSS and JavaScript, with C++ as the preferred language for contests and problem solving. Includes CareFlow and Wave-Safe project details, LeetCode/Codeforces/CodeChef profiles, a GitHub source link to College Forum, experience, education, skills, achievements, a personal portrait and a downloadable résumé. The original palette, typography, artwork and responsive styles are preserved.
 
-## Run locally
+![HTML](https://img.shields.io/badge/HTML-334155?style=flat-square)
+![CSS](https://img.shields.io/badge/CSS-334155?style=flat-square)
+![JavaScript](https://img.shields.io/badge/JavaScript-334155?style=flat-square)
+
+[Quick start](#quick-start) · [Project structure](#project-structure) · [Testing](#testing)
+
+</div>
+
+---
+
+## The problem
+
+Project work, coding profiles and experience often live across separate pages. This portfolio gives visitors one place to explore that work, open project details and get in touch.
+
+## At a glance
+
+| Area | What it covers |
+| --- | --- |
+| Work | Project dialogs, experience and technical skills |
+| Profiles | Competitive programming and source links |
+| Contact | Résumé download, email and a configured contact form |
+
+## Quick start
 
 Use Node.js 24 and npm:
 
@@ -13,7 +39,7 @@ npm run dev
 
 Open [http://127.0.0.1:4317](http://127.0.0.1:4317). Stop with `Ctrl+C`; set `PORT` to use a different port. The website has no runtime dependencies or build step. To preview without development tools, run `node scripts/serve.mjs` directly.
 
-## Files
+## Project structure
 
 ```text
 dist/                 Tracked, hand-authored website source
@@ -50,7 +76,7 @@ The form posts `FormData` directly to Web3Forms, including the topic/name subjec
 
 After adding your key and deploying, submit a test from the production domain and check that the message arrives and Reply uses the sender's email. Automated checks use mocked responses; they do not verify inbox delivery. This redesign replaces the earlier unmerged FormSubmit proposal (PR #4); do not merge both implementations.
 
-## Verify and review
+## Testing
 
 ```sh
 npm run format
