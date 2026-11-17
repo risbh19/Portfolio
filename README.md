@@ -109,4 +109,4 @@ Email links use the visitor's mail application.
 
 ## Design reference
 
-The retro Macintosh-inspired design uses a desktop menu bar, striped title bars, offset shadows and a portrait in the welcome window. The project carousel sits alongside coding profiles, an About window and a contact window.
+The retro Macintosh-inspired design uses a gray desktop menu bar, a full-width welcome area with a portrait, and a patterned Projects section with window-style cards. Scroll, swipe, use the arrow keys or select a numbered control to move through the carousel. Coding profiles, About and Contact sit below the Projects section.

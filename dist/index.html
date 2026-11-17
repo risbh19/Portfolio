@@ -49,104 +49,106 @@
     >
     <main id="main">
       <section class="hero wrap" id="top" aria-labelledby="hero-title">
-        <div class="desktop-window">
-          <div class="window-bar"
-            ><span class="window-square" aria-hidden="true"></span><span>Welcome</span></div
-          >
-          <div class="hero-layout">
-            <div class="hero-copy">
-              <p class="eyebrow mono" data-content="role">Full-stack developer / problem solver</p>
-              <h1 id="hero-title">Hello, I’m<br />Rishabh.</h1>
-              <p class="hero-description" data-content="intro" data-emphasis
-                >I’m Rishabh, a CSE student building full-stack web applications and practising
-                competitive programming in C++.</p
-              >
-              <a
-                class="raised-link"
-                href="assets/Rishabh_Resume.pdf"
-                data-resume-link
-                target="_blank"
-                rel="noopener noreferrer"
-                >View résumé <span aria-hidden="true">↗</span></a
-              >
-            </div>
-            <figure class="hero-photo">
-              <img
-                src="assets/profile.jpg"
-                width="1254"
-                height="1254"
-                alt="Rishabh Pal"
-                fetchpriority="high"
-              />
-            </figure>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow mono" data-content="role">Full-stack developer / problem solver</p>
+            <h1 id="hero-title">Hello, I’m<br />Rishabh.</h1>
+            <p class="hero-description" data-content="intro" data-emphasis
+              >I’m Rishabh, a CSE student building full-stack web applications and practising
+              competitive programming in C++.</p
+            >
+            <a
+              class="raised-link"
+              href="assets/Rishabh_Resume.pdf"
+              data-resume-link
+              target="_blank"
+              rel="noopener noreferrer"
+              >View résumé <span aria-hidden="true">↗</span></a
+            >
           </div>
+          <figure class="hero-photo">
+            <img
+              src="assets/profile.jpg"
+              width="1254"
+              height="1254"
+              alt="Rishabh Pal"
+              fetchpriority="high"
+            />
+          </figure>
         </div>
-        <nav class="desktop-shortcuts" aria-label="Quick links">
-          <a href="#work">Projects <span aria-hidden="true">↘</span></a>
-          <a href="#coding">Coding <span aria-hidden="true">↘</span></a>
-          <a href="#about">About <span aria-hidden="true">↘</span></a>
-          <a href="#contact">Contact <span aria-hidden="true">↘</span></a>
+        <nav class="desktop-shortcuts" aria-labelledby="quick-links-title">
+          <h2 id="quick-links-title">Quick links</h2>
+          <div class="shortcut-list">
+            <a href="#work">Projects <span aria-hidden="true">↘</span></a>
+            <a href="#coding">Coding <span aria-hidden="true">↘</span></a>
+            <a href="#about">About <span aria-hidden="true">↘</span></a>
+            <a href="#contact">Contact <span aria-hidden="true">↘</span></a>
+          </div>
         </nav>
       </section>
-      <section class="work-section wrap section-space" id="work" aria-labelledby="work-title">
-        <h2 id="work-title">Selected projects</h2>
-        <div class="project-grid">
-          <article data-project="miniredis" class="project-card">
-            <p class="project-type mono">Systems engineering</p>
-            <h3><button type="button" data-open-project="miniredis">mini-redis</button></h3>
-            <p
-              >A Redis-compatible string key-value server with expiration, exact LRU, snapshots and
-              an append-only log.</p
-            >
-          </article>
-          <article data-project="collegeforum" class="project-card">
-            <p class="project-type mono">Full-stack web application</p>
-            <h3><button type="button" data-open-project="collegeforum">College Forum</button></h3>
-            <p
-              >A campus discussion forum with Google sign-in, pseudonymous usernames, posts, votes
-              and moderation.</p
-            >
-          </article>
-          <article data-project="racesafe" class="project-card">
-            <p class="project-type mono">Full-stack web application</p>
-            <h3><button type="button" data-open-project="racesafe">RaceSafe</button></h3>
-            <p
-              >A hackathon team workspace with expiring invites, live updates and database-enforced
-              seat limits.</p
-            >
-          </article>
-          <article data-project="nextup" class="project-card">
-            <p class="project-type mono">Clinic operations demo</p>
-            <h3><button type="button" data-open-project="nextup">NextUp</button></h3>
-            <p
-              >A synthetic clinic demo with transactional bookings, waitlists, live queues and
-              reviewed care tasks.</p
-            >
-          </article>
-          <article data-project="trading" class="project-card">
-            <p class="project-type mono">Systems engineering</p>
-            <h3><button type="button" data-open-project="trading">Paper Trading Engine</button></h3>
-            <p
-              >A deterministic paper trading replay with simulated fills, fixed-point accounting and
-              inline risk checks.</p
-            >
-          </article>
-          <article data-project="orbit" class="project-card">
-            <p class="project-type mono">Desktop application</p>
-            <h3><button type="button" data-open-project="orbit">Orbit</button></h3>
-            <p
-              >An early desktop IDE with a piece-table editor, multi-cursor editing, language-server
-              features and a terminal.</p
-            >
-          </article>
-          <article data-project="casetrace" class="project-card">
-            <p class="project-type mono">Training application</p>
-            <h3><button type="button" data-open-project="casetrace">CaseTrace</button></h3>
-            <p
-              >A synthetic investigation workspace for evidence integrity, transfer tracing, legal
-              lookup and supervisory review.</p
-            >
-          </article>
+      <section class="work-section" id="work" aria-labelledby="work-title">
+        <div class="wrap">
+          <div class="work-heading"><h2 id="work-title">Projects</h2></div>
+          <div class="project-grid">
+            <article data-project="miniredis" class="project-card">
+              <p class="project-type mono">Systems engineering</p>
+              <h3><button type="button" data-open-project="miniredis">mini-redis</button></h3>
+              <p
+                >A Redis-compatible string key-value server with expiration, exact LRU, snapshots
+                and an append-only log.</p
+              >
+            </article>
+            <article data-project="collegeforum" class="project-card">
+              <p class="project-type mono">Full-stack web application</p>
+              <h3><button type="button" data-open-project="collegeforum">College Forum</button></h3>
+              <p
+                >A campus discussion forum with Google sign-in, pseudonymous usernames, posts, votes
+                and moderation.</p
+              >
+            </article>
+            <article data-project="racesafe" class="project-card">
+              <p class="project-type mono">Full-stack web application</p>
+              <h3><button type="button" data-open-project="racesafe">RaceSafe</button></h3>
+              <p
+                >A hackathon team workspace with expiring invites, live updates and
+                database-enforced seat limits.</p
+              >
+            </article>
+            <article data-project="nextup" class="project-card">
+              <p class="project-type mono">Clinic operations demo</p>
+              <h3><button type="button" data-open-project="nextup">NextUp</button></h3>
+              <p
+                >A synthetic clinic demo with transactional bookings, waitlists, live queues and
+                reviewed care tasks.</p
+              >
+            </article>
+            <article data-project="trading" class="project-card">
+              <p class="project-type mono">Systems engineering</p>
+              <h3
+                ><button type="button" data-open-project="trading">Paper Trading Engine</button></h3
+              >
+              <p
+                >A deterministic paper trading replay with simulated fills, fixed-point accounting
+                and inline risk checks.</p
+              >
+            </article>
+            <article data-project="orbit" class="project-card">
+              <p class="project-type mono">Desktop application</p>
+              <h3><button type="button" data-open-project="orbit">Orbit</button></h3>
+              <p
+                >An early desktop IDE with a piece-table editor, multi-cursor editing,
+                language-server features and a terminal.</p
+              >
+            </article>
+            <article data-project="casetrace" class="project-card">
+              <p class="project-type mono">Training application</p>
+              <h3><button type="button" data-open-project="casetrace">CaseTrace</button></h3>
+              <p
+                >A synthetic investigation workspace for evidence integrity, transfer tracing, legal
+                lookup and supervisory review.</p
+              >
+            </article>
+          </div>
         </div>
       </section>
       <section class="about-section wrap section-space" id="coding" aria-labelledby="coding-title">
