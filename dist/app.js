@@ -109,6 +109,13 @@
     document.body.classList.remove('modal-open');
     previousFocus?.focus();
   });
+  function projectLink(label, value) {
+    const url = value && safeUrl(value);
+    return url
+      ? `<a class="raised-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} <span aria-hidden="true">↗</span></a>`
+      : '';
+  }
+
   function openProject(id) {
     const project = config.projects[id];
     if (!project) return;
@@ -121,7 +128,14 @@
           >
           <h2 id="dialog-title">${esc(project.title)}</h2>
           <p class="project-intro">${esc(project.summary)}</p>
-          <div class="dialog-art" aria-hidden="true"></div>
+          <figure class="dialog-art">
+            <img
+              src="assets/project-snapshots/${esc(id)}.webp"
+              width="1120"
+              height="700"
+              alt="Local capture of ${esc(project.title)}"
+            />
+          </figure>
           <p class="visual-note mono">${esc(project.visualNote)}</p>
           <dl class="dialog-facts">
             <div><dt>DISCIPLINE</dt><dd>${esc(project.category)}</dd></div>
@@ -138,32 +152,14 @@
           <section class="case-section"
             ><h3>THE IMPLEMENTATION</h3><p>${esc(project.outcome)}</p></section
           >
-          ${
-            project.link && safeUrl(project.link)
-              ? `<a class="split-button" href="${esc(safeUrl(project.link))}" target="_blank" rel="noopener noreferrer"><span>${esc(project.linkLabel)}</span><span>↗</span></a>`
-              : '<p class="link-placeholder mono">REPOSITORY / LIVE DEMO LINK — TO BE ADDED</p>'
-          }
+          <div class="dialog-links">
+            ${projectLink(project.linkLabel, project.link)}
+            ${projectLink('Live demo', project.demo)}
+            ${project.link ? '' : '<p class="link-placeholder mono">Source repository is private.</p>'}
+          </div>
         </div>
       `,
     );
-    const source = $(`[data-project="${id}"] .project-visual`);
-    const clone = source.cloneNode(true);
-    clone.removeAttribute('data-open-project');
-    clone.removeAttribute('aria-label');
-    clone.setAttribute('tabindex', '-1');
-    clone.setAttribute('disabled', '');
-    $$('.project-open', clone).forEach((node) => node.remove());
-    const clonedIds = $$('[id]', clone).map((node) => {
-      const old = node.id;
-      node.id = `${old}-dialog`;
-      return old;
-    });
-    let clonedMarkup = clone.innerHTML;
-    clonedIds.forEach((id) => {
-      clonedMarkup = clonedMarkup.replaceAll(`url(#${id})`, `url(#${id}-dialog)`);
-    });
-    clone.innerHTML = clonedMarkup;
-    $('.dialog-art', dialog).appendChild(clone);
   }
   $$('[data-open-project]').forEach((button) =>
     button.addEventListener('click', () => openProject(button.dataset.openProject)),

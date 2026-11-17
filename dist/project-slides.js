@@ -68,7 +68,7 @@
     </div>
   `;
 
-  // Keep the existing dialog handlers and their source artwork attached to the page.
+  // Keep the project details buttons attached to the page for the dialog handlers.
   const original = document.createElement('div');
   original.className = 'project-slides__original';
   original.hidden = true;
