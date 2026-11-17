@@ -1,167 +1,143 @@
 (() => {
   'use strict';
 
-  const portfolio = window.PORTFOLIO;
-  const section = document.querySelector('#projects') ?? document.querySelector('#work');
-  if (!section || !portfolio?.projects) return;
+  const section = document.querySelector('#work');
+  const track = section?.querySelector('.project-grid');
+  const heading = section?.querySelector('.work-heading');
+  const cards = [...(track?.querySelectorAll('[data-project]') ?? [])];
+  if (!heading || cards.length < 2) return;
 
-  const projects = [
-    ['miniredis', 'mini-redis', 'C++17 · RESP2 · epoll', 'Dashboard and sample keys'],
-    [
-      'collegeforum',
-      'College Forum',
-      'Next.js · FastAPI · PostgreSQL',
-      'Forum boards and demo posts',
-    ],
-    ['racesafe', 'RaceSafe', 'React · FastAPI · PostgreSQL', 'Team recruitment workspace'],
-    ['nextup', 'NextUp', 'Next.js · FastAPI · PostgreSQL', 'Confirmed demo clinic booking'],
-    [
-      'trading',
-      'Paper Trading Engine',
-      'C++20 · Python · CSV replay',
-      'Local paper-trading replay',
-    ],
-    ['orbit', 'Orbit', 'TypeScript · Electron · LSP', 'Hello Orbit workspace'],
-    ['casetrace', 'CaseTrace', 'React · FastAPI · SQLite', 'Synthetic transfer trail'],
-  ].map(([key, title, stack, caption]) => ({
-    key,
-    title,
-    stack,
-    caption,
-    record: portfolio.projects[key],
-    trigger: section.querySelector(`[data-open-project="${key}"]`),
-  }));
-  if (projects.some(({ record, trigger }) => !record || !trigger)) return;
+  const captions = {
+    miniredis: 'Dashboard and sample keys',
+    collegeforum: 'Forum boards and demo posts',
+    racesafe: 'Team recruitment workspace',
+    nextup: 'Confirmed demo clinic booking',
+    trading: 'Local paper-trading replay',
+    orbit: 'Hello Orbit workspace',
+    casetrace: 'Synthetic transfer trail',
+  };
+  const projects = window.PORTFOLIO.projects;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  section.setAttribute('aria-roledescription', 'carousel');
+  track.classList.add('is-carousel');
+  track.id = 'project-carousel-track';
+  track.setAttribute('role', 'group');
+  track.setAttribute('aria-label', 'Project cards');
 
-  const deck = document.createElement('div');
-  deck.className = 'project-slides';
-  deck.innerHTML = `
-    <h2 class="project-slides__heading" id="project-slides-title">Selected projects</h2>
-    <div class="project-slides__window" role="region" aria-roledescription="carousel" aria-labelledby="project-slides-title">
-      <div class="project-slides__bar">
-        <span aria-hidden="true" class="project-slides__mark"></span>
-        <span>Projects</span>
-        <span data-slide-position></span>
-      </div>
-      <div class="project-slides__stage" id="project-slides-stage">
-        <div class="project-slides__copy">
-          <p class="project-slides__category" data-slide-category></p>
-          <h3 data-slide-title></h3>
-          <p class="project-slides__summary" data-slide-summary></p>
-          <p class="project-slides__stack" data-slide-stack></p>
-          <button class="project-slides__details" type="button" data-slide-details>Project details <span aria-hidden="true">↗</span></button>
-        </div>
-        <figure class="project-slides__figure">
-          <div class="project-slides__screen">
-            <img width="1120" height="700" alt="" data-slide-image />
-            <p data-slide-missing hidden>Local capture pending</p>
-          </div>
-          <figcaption data-slide-caption></figcaption>
-        </figure>
-      </div>
-      <div class="project-slides__controls">
-        <button type="button" aria-label="Previous project" aria-controls="project-slides-stage" data-slide-prev><span aria-hidden="true">←</span> <span>Prev</span></button>
-        <div class="project-slides__list" role="group" aria-label="Choose a project"></div>
-        <button type="button" aria-label="Next project" aria-controls="project-slides-stage" data-slide-next><span>Next</span> <span aria-hidden="true">→</span></button>
-      </div>
-      <p class="project-slides__sr" role="status" data-slide-status></p>
-    </div>
+  cards.forEach((card) => {
+    const { project: key } = card.dataset;
+    const project = projects[key];
+    const category = card.querySelector('.project-type');
+    const title = card.querySelector('h3');
+    const details = card.querySelector('[data-open-project]');
+    const summary = card.querySelector('p:not(.project-type)');
+
+    category.classList.add('project-card__bar');
+    const figure = document.createElement('figure');
+    figure.className = 'project-card__snapshot';
+    const image = new Image(1120, 700);
+    image.src = `assets/project-snapshots/${key}.webp`;
+    image.alt = `${project.title} — ${captions[key]}`;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    const caption = document.createElement('figcaption');
+    caption.textContent = captions[key];
+    figure.append(image, caption);
+
+    const copy = document.createElement('div');
+    copy.className = 'project-card__copy';
+    const stack = document.createElement('p');
+    stack.className = 'project-card__stack';
+    stack.textContent = project.stack;
+    title.textContent = project.title;
+    details.textContent = 'Project details ↗';
+    details.setAttribute('aria-label', `Project details — ${project.title}`);
+    copy.append(title, summary, stack, details);
+    card.append(figure, copy);
+  });
+
+  const navigation = document.createElement('div');
+  navigation.className = 'project-navigation';
+  navigation.innerHTML = `
+    <button type="button" aria-label="Previous project" aria-controls="project-carousel-track">←</button>
+    <span class="project-navigation__position" aria-hidden="true"></span>
+    <button type="button" aria-label="Next project" aria-controls="project-carousel-track">→</button>
   `;
+  heading.append(navigation);
+  const [previous, next] = navigation.querySelectorAll('button');
+  const position = navigation.querySelector('.project-navigation__position');
 
-  // Keep the project details buttons attached to the page for the dialog handlers.
-  const original = document.createElement('div');
-  original.className = 'project-slides__original';
-  original.hidden = true;
-  original.append(...section.childNodes);
-  section.append(deck, original);
-  section.setAttribute('aria-labelledby', 'project-slides-title');
+  const index = document.createElement('div');
+  index.className = 'project-index';
+  index.setAttribute('role', 'group');
+  index.setAttribute('aria-label', 'Choose a project');
+  const status = document.createElement('p');
+  status.className = 'project-carousel-status';
+  status.setAttribute('role', 'status');
+  track.after(index, status);
 
-  const find = (selector) => deck.querySelector(selector);
-  const stage = find('#project-slides-stage');
-  const list = find('.project-slides__list');
-  const image = find('[data-slide-image]');
-  const missing = find('[data-slide-missing]');
-  const details = find('[data-slide-details]');
-  const buttons = projects.map(({ title }, index) => {
+  let current = 0;
+  let scrollTimer;
+  const format = (n) => String(n).padStart(2, '0');
+  const offset = (card) => card.offsetLeft - cards[0].offsetLeft;
+  const choices = cards.map((card, i) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = String(index + 1).padStart(2, '0');
-    button.setAttribute('aria-label', title);
-    button.setAttribute('aria-controls', stage.id);
-    button.addEventListener('click', () => show(index));
-    list.append(button);
+    button.textContent = format(i + 1);
+    button.setAttribute('aria-label', projects[card.dataset.project].title);
+    button.setAttribute('aria-controls', track.id);
+    button.addEventListener('click', () => select(i));
+    index.append(button);
     return button;
   });
 
-  let current = 0;
-  const count = projects.length;
-  function show(index, announce = true) {
-    current = (index + count) % count;
-    const { key, title, stack, caption, record } = projects[current];
-    const position = String(current + 1).padStart(2, '0');
-    find('[data-slide-position]').textContent = `${position} / ${String(count).padStart(2, '0')}`;
-    find('[data-slide-category]').textContent = record.category;
-    find('[data-slide-title]').textContent = title;
-    find('[data-slide-summary]').textContent = record.summary;
-    find('[data-slide-stack]').textContent = stack;
-    find('[data-slide-caption]').textContent = caption;
-    image.alt = `${title} — ${caption}`;
-    image.src = `assets/project-snapshots/${key}.webp`;
-    image.hidden = false;
-    missing.hidden = true;
-    buttons.forEach((button, i) => button.setAttribute('aria-current', String(i === current)));
+  function update(i, announce) {
+    current = i;
+    position.textContent = `${format(i + 1)} / ${format(cards.length)}`;
+    previous.setAttribute('aria-disabled', String(i === 0));
+    next.setAttribute('aria-disabled', String(i === cards.length - 1));
+    choices.forEach((button, choice) => button.setAttribute('aria-current', String(choice === i)));
     if (announce)
-      find('[data-slide-status]').textContent = `${title}, project ${current + 1} of ${count}`;
+      status.textContent = `${projects[cards[i].dataset.project].title}, project ${i + 1} of ${cards.length}`;
   }
 
-  image.addEventListener('error', () => {
-    image.hidden = true;
-    missing.hidden = false;
-    find('[data-slide-caption]').textContent = '';
-  });
-  details.addEventListener('click', () => {
-    details.focus();
-    projects[current].trigger.click();
-  });
-  find('[data-slide-prev]').addEventListener('click', () => show(current - 1));
-  find('[data-slide-next]').addEventListener('click', () => show(current + 1));
-  deck.addEventListener('keydown', (event) => {
+  function select(i) {
+    const target = Math.min(Math.max(i, 0), cards.length - 1);
+    if (target === current) return;
+    update(target, true);
+    track.scrollTo({
+      left: offset(cards[target]),
+      behavior: motion.matches ? 'instant' : 'smooth',
+    });
+  }
+
+  track.addEventListener(
+    'scroll',
+    () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const distance = (card) => Math.abs(offset(card) - track.scrollLeft);
+        const nearest = cards.reduce((best, card) =>
+          distance(card) < distance(best) ? card : best,
+        );
+        const i = cards.indexOf(nearest);
+        if (i !== current) update(i, true);
+      }, 140);
+    },
+    { passive: true },
+  );
+  previous.addEventListener('click', () => select(current - 1));
+  next.addEventListener('click', () => select(current + 1));
+  section.addEventListener('keydown', (event) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
-    if (event.key === 'Home') show(0);
-    else if (event.key === 'End') show(count - 1);
-    else show(current + (event.key === 'ArrowLeft' ? -1 : 1));
-    if (list.contains(event.target)) buttons[current].focus();
+    if (event.key === 'Home') select(0);
+    else if (event.key === 'End') select(cards.length - 1);
+    else select(current + (event.key === 'ArrowLeft' ? -1 : 1));
+    if (index.contains(event.target)) choices[current].focus();
+    if (event.target.closest('.project-card')) {
+      cards[current].querySelector('[data-open-project]').focus({ preventScroll: true });
+    }
   });
-
-  let touch;
-  stage.addEventListener(
-    'touchstart',
-    (event) => {
-      touch = event.touches.length === 1 ? event.touches[0] : null;
-    },
-    { passive: true },
-  );
-  stage.addEventListener(
-    'touchend',
-    (event) => {
-      if (!touch) return;
-      const { clientX, clientY } = event.changedTouches[0];
-      const distance = clientX - touch.clientX;
-      if (Math.abs(distance) > 50 && Math.abs(distance) > Math.abs(clientY - touch.clientY) * 1.5) {
-        show(current + (distance < 0 ? 1 : -1));
-      }
-      touch = null;
-    },
-    { passive: true },
-  );
-  stage.addEventListener(
-    'touchcancel',
-    () => {
-      touch = null;
-    },
-    { passive: true },
-  );
-
-  show(0, false);
+  update(0, false);
 })();

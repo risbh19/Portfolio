@@ -49,7 +49,7 @@ dist/                 Tracked, hand-authored website source
   project-slides.js   Project carousel and keyboard/touch controls
   project-slides.css  Carousel layout and styling
   style.css           Styles and responsive layout
-  assets/             Portrait, résumé, computer illustration and project snapshots
+  assets/             Profile photo, résumé and project snapshots
 scripts/              Local preview and source verification
 .github/              Automatic checks and pull request template
 vercel.json           Static deployment configuration
@@ -109,4 +109,4 @@ Email links use the visitor's mail application.
 
 ## Design reference
 
-The retro Macintosh-inspired design uses a desktop menu bar, striped title bars, offset shadows and an original computer SVG. The project carousel sits alongside coding profiles, an About window and a contact window.
+The retro Macintosh-inspired design uses a gray desktop menu bar, a full-width welcome area with a portrait, and a patterned Projects section with window-style cards. Scroll, swipe, use the arrow keys or select a numbered control to move through the carousel. Coding profiles, About and Contact sit below the Projects section.

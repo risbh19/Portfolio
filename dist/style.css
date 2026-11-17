@@ -1,9 +1,9 @@
 :root {
   --ink: #181817;
   --muted: #555550;
-  --paper: #fdfcf6;
-  --desktop: #e6e5dd;
-  --chrome: #deddd3;
+  --paper: #fdfdfb;
+  --desktop: #e7e7e3;
+  --chrome: #d1d1cd;
   --line: #afaea5;
   --shadow: 6px 6px var(--ink);
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -23,7 +23,10 @@
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
+  border: 5px solid var(--ink);
+  background: var(--paper);
 }
 
 [hidden] {
@@ -75,18 +78,17 @@ img {
   height: auto;
 }
 
-.mono,
-.window-bar {
+.mono {
   font-family: var(--mono);
 }
 
 .wrap {
-  width: min(1120px, calc(100% - 3rem));
+  width: min(1160px, calc(100% - 3rem));
   margin-inline: auto;
 }
 
 .section-space {
-  margin-top: clamp(4.5rem, 10vw, 8rem);
+  margin-top: clamp(3.75rem, 8vw, 6.25rem);
 }
 
 .skip-link {
@@ -108,13 +110,12 @@ img {
   z-index: 5;
   top: 0;
   display: flex;
-  min-height: 3.5rem;
+  min-height: 2.85rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.4rem max(1.5rem, calc((100% - 1120px) / 2));
+  gap: clamp(1rem, 3vw, 2.6rem);
+  padding: 0.25rem max(1.5rem, calc((100% - 1160px) / 2));
   border-bottom: 2px solid var(--ink);
-  background: var(--paper);
+  background: var(--chrome);
   font: 700 0.87rem/1.2 var(--mono);
 }
 
@@ -131,8 +132,11 @@ img {
 }
 
 .wordmark svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0.1rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
 }
 
 .desktop-nav {
@@ -140,7 +144,7 @@ img {
 }
 
 .desktop-nav a {
-  padding: 0.65rem 0;
+  padding: 0.45rem 0;
   text-decoration: none;
 }
 
@@ -148,11 +152,6 @@ img {
   text-decoration: underline;
 }
 
-.hero {
-  margin-top: clamp(2rem, 6vw, 5.5rem);
-}
-
-.desktop-window,
 #coding,
 #about,
 .contact-layout {
@@ -161,7 +160,6 @@ img {
   box-shadow: var(--shadow);
 }
 
-.window-bar,
 .dialog-top {
   display: flex;
   min-height: 2.65rem;
@@ -174,36 +172,18 @@ img {
   font-weight: 700;
 }
 
-.window-bar {
-  position: relative;
-}
-
-.window-bar span,
 .dialog-top span,
 .dialog-close {
   padding: 0.18rem 0.5rem;
   background: var(--paper);
 }
 
-.window-bar .window-square {
-  position: absolute;
-  left: 0.85rem;
-  width: 0.95rem;
-  height: 0.95rem;
-  padding: 0;
-  border: 1px solid var(--ink);
-  box-shadow:
-    inset 0 0 0 2px var(--paper),
-    inset 0 0 0 3px var(--ink);
-}
-
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
   align-items: center;
-  gap: clamp(1rem, 4vw, 3rem);
-  min-height: 29rem;
-  padding: clamp(1.4rem, 5vw, 4.4rem);
+  gap: clamp(1.75rem, 7vw, 7rem);
+  padding: clamp(2rem, 4.5vw, 3.6rem) 0 clamp(1.75rem, 3.25vw, 2.4rem);
 }
 
 .eyebrow {
@@ -214,7 +194,7 @@ img {
 
 .hero h1 {
   margin: 0.85rem 0 1.3rem;
-  font-size: clamp(3.35rem, 7.8vw, 7rem);
+  font-size: clamp(3.35rem, 7.2vw, 6.5rem);
   line-height: 0.89;
   letter-spacing: -0.075em;
 }
@@ -226,13 +206,18 @@ img {
   font-size: clamp(1rem, 1.5vw, 1.16rem);
 }
 
-.hero-art {
-  background: radial-gradient(var(--line) 0.75px, transparent 0.75px) var(--desktop) 0 0 / 5px 5px;
+.hero-photo {
+  width: min(100%, 29rem);
+  justify-self: center;
   border: 1px solid var(--ink);
+  background: var(--desktop);
 }
 
-.hero-art img {
+.hero-photo img {
   width: 100%;
+  aspect-ratio: 49 / 38;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .raised-link,
@@ -260,16 +245,27 @@ img {
 
 .raised-link:hover,
 .contact-send:not(:disabled):hover,
-.contact-ghost:hover,
-.desktop-shortcuts a:hover {
+.contact-ghost:hover {
   background: var(--chrome);
 }
 
 .desktop-shortcuts {
+  position: relative;
+  z-index: 1;
+}
+
+.desktop-shortcuts h2 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  letter-spacing: -0.03em;
+}
+
+.shortcut-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin-top: 1.25rem;
+  border: 1px solid var(--ink);
+  background: var(--chrome);
+  box-shadow: 3px 3px var(--ink);
 }
 
 .desktop-shortcuts a {
@@ -279,10 +275,17 @@ img {
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.55rem 0.9rem;
-  border: 1px solid var(--ink);
-  background: var(--paper);
+  background: var(--chrome);
   font: 700 0.85rem/1.35 var(--mono);
   text-decoration: none;
+}
+
+.desktop-shortcuts a + a {
+  border-inline-start: 1px solid var(--ink);
+}
+
+.desktop-shortcuts a:hover {
+  background: var(--desktop);
 }
 
 .project-grid {
@@ -443,7 +446,7 @@ details summary .mono {
 }
 
 .contact-section {
-  margin-top: clamp(4.5rem, 10vw, 8rem);
+  margin-top: clamp(3.75rem, 8vw, 6.25rem);
 }
 
 .contact-icons {
@@ -645,13 +648,14 @@ dialog::backdrop {
   .menu-toggle {
     display: inline-flex;
     min-height: 2.25rem;
+    margin-inline-start: auto;
     box-shadow: none;
   }
 
   .menu-panel {
     position: fixed;
     z-index: 4;
-    top: 3.5rem;
+    top: 2.85rem;
     right: 1rem;
     left: 1rem;
     display: grid;
@@ -679,12 +683,20 @@ dialog::backdrop {
     min-height: 0;
   }
 
-  .hero-art {
+  .hero-photo {
     max-width: 28rem;
   }
 
-  .desktop-shortcuts {
+  .shortcut-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .desktop-shortcuts a:nth-child(3) {
+    border-inline-start: 0;
+  }
+
+  .desktop-shortcuts a:nth-child(n + 3) {
+    border-top: 1px solid var(--ink);
   }
 
   .experience {
@@ -693,6 +705,10 @@ dialog::backdrop {
 }
 
 @media (max-width: 430px) {
+  body {
+    border-width: 3px;
+  }
+
   .wrap {
     width: calc(100% - 2rem);
   }
