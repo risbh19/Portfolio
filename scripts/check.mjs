@@ -24,6 +24,7 @@ try {
     'dist/app.js',
     'dist/contact.js',
     'dist/content.js',
+    'dist/project-slides.js',
     'scripts/serve.mjs',
     'scripts/check.mjs',
   ]) {
@@ -81,6 +82,11 @@ try {
     'Project cards and content keys must match.',
   );
   for (const id of projectIds) {
+    const snapshot = join(dist, 'assets', 'project-snapshots', id + '.webp');
+    assert.ok(
+      existsSync(snapshot) && statSync(snapshot).isFile(),
+      `Missing project snapshot: ${id}`,
+    );
     for (const field of [
       'title',
       'category',

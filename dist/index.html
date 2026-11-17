@@ -11,8 +11,10 @@
     <title>Rishabh Pal — Full-Stack Developer &amp; Problem Solver</title>
     <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="project-slides.css" />
     <script src="content.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="project-slides.js" defer></script>
     <script src="contact.js" defer></script>
   </head>
   <body>
@@ -28,7 +30,7 @@
         <span data-content="name">Rishabh Pal</span>
       </a>
       <nav class="desktop-nav" aria-label="Main navigation"
-        ><a href="#work">Work</a><a href="#coding">Coding</a><a href="#about">About</a
+        ><a href="#work">Projects</a><a href="#coding">Coding</a><a href="#about">About</a
         ><a href="#contact">Contact</a></nav
       >
       <button
@@ -40,104 +42,114 @@
       >
     </header>
     <nav class="menu-panel" id="menu-panel" aria-label="Mobile navigation" hidden
-      ><a href="#work">Work <span aria-hidden="true">↗</span></a
+      ><a href="#work">Projects <span aria-hidden="true">↗</span></a
       ><a href="#coding">Coding <span aria-hidden="true">↗</span></a
       ><a href="#about">About <span aria-hidden="true">↗</span></a
       ><a href="#contact">Contact <span aria-hidden="true">↗</span></a></nav
     >
     <main id="main">
       <section class="hero wrap" id="top" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow mono" data-content="role">FULL-STACK DEVELOPER / PROBLEM SOLVER</p>
-          <h1 id="hero-title">Full-stack builder.<br />Problem solver.</h1>
-          <p class="hero-description" data-content="intro" data-emphasis
-            >I'm Rishabh, a CSE student building <strong>full-stack web applications</strong> with
-            React, Next.js and FastAPI. I practise <strong>competitive programming</strong> in
-            <strong>C++</strong>, my preferred language for contests and problem solving.</p
+        <div class="desktop-window">
+          <div class="window-bar"
+            ><span class="window-square" aria-hidden="true"></span><span>Welcome</span></div
           >
-          <div class="hero-actions"
-            ><a class="primary-link" href="#work">View projects <span aria-hidden="true">↘</span></a
-            ><a class="text-link" href="#coding"
-              >Coding profiles <span aria-hidden="true">↘</span></a
-            ><a
-              class="text-link"
-              href="assets/Rishabh_Resume.pdf"
-              data-resume-link
-              target="_blank"
-              rel="noopener noreferrer"
-              >Resume <span aria-hidden="true">↗</span></a
-            ></div
-          >
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <p class="eyebrow mono" data-content="role">Full-stack developer / problem solver</p>
+              <h1 id="hero-title">Hello, I’m<br />Rishabh.</h1>
+              <p class="hero-description" data-content="intro" data-emphasis
+                >I’m Rishabh, a CSE student building full-stack web applications and practising
+                competitive programming in C++.</p
+              >
+              <a
+                class="raised-link"
+                href="assets/Rishabh_Resume.pdf"
+                data-resume-link
+                target="_blank"
+                rel="noopener noreferrer"
+                >View résumé <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <img
+                src="assets/retro-computer.svg"
+                width="490"
+                height="380"
+                alt=""
+                fetchpriority="high"
+              />
+            </div>
+          </div>
         </div>
-        <figure class="portrait"
-          ><img
-            src="assets/profile.jpg"
-            alt="Rishabh Pal"
-            width="1254"
-            height="1254"
-            decoding="async"
-            fetchpriority="high"
-        /></figure>
+        <nav class="desktop-shortcuts" aria-label="Quick links">
+          <a href="#work">Projects <span aria-hidden="true">↘</span></a>
+          <a href="#coding">Coding <span aria-hidden="true">↘</span></a>
+          <a href="#about">About <span aria-hidden="true">↘</span></a>
+          <a href="#contact">Contact <span aria-hidden="true">↘</span></a>
+        </nav>
       </section>
       <section class="work-section wrap section-space" id="work" aria-labelledby="work-title">
-        <div class="section-marker mono"><span>01 / SELECTED WORK</span></div>
-        <div class="section-heading"
-          ><h2 id="work-title">Projects</h2
-          ><p>Frontend, APIs and databases. Connected through practical projects.</p></div
-        >
+        <h2 id="work-title">Selected projects</h2>
         <div class="project-grid">
-          <article class="project" data-project="careflow">
-            <button
-              type="button"
-              class="project-visual careflow-art"
-              data-open-project="careflow"
-              aria-label="Explore CareFlow project"
+          <article data-project="miniredis" class="project-card">
+            <p class="project-type mono">Systems engineering</p>
+            <h3><button type="button" data-open-project="miniredis">mini-redis</button></h3>
+            <p
+              >A Redis-compatible string key-value server with expiration, exact LRU, snapshots and
+              an append-only log.</p
             >
-              <span class="art-label mono">PROJECT ILLUSTRATION</span
-              ><span class="careflow-title">CareFlow<span>+</span></span
-              ><span class="careflow-portals mono"
-                ><span>DOCTOR</span><span>NURSE</span><span>PATIENT</span></span
-              ><span class="project-open" aria-hidden="true">↗</span>
-            </button>
-            <div class="project-caption"
-              ><h3><button type="button" data-open-project="careflow">CareFlow</button></h3
-              ><span class="project-type mono">FULL-STACK · HEALTHCARE</span></div
-            >
-            <p class="project-summary"
-              >Role-based portals, authentication and real-time hospital workflows. Built with
-              synthetic data.</p
-            ><p class="project-stack mono">NEXT.JS / FASTAPI / MONGODB / SSE</p>
           </article>
-          <article class="project" data-project="wavesafe">
-            <button
-              type="button"
-              class="project-visual wavesafe-art"
-              data-open-project="wavesafe"
-              aria-label="Explore Wave-Safe project"
+          <article data-project="collegeforum" class="project-card">
+            <p class="project-type mono">Full-stack web application</p>
+            <h3><button type="button" data-open-project="collegeforum">College Forum</button></h3>
+            <p
+              >A campus discussion forum with Google sign-in, pseudonymous usernames, posts, votes
+              and moderation.</p
             >
-              <img
-                src="assets/wavesafe-home.png"
-                alt="WaveSafe homepage with an ocean background and beach trip introduction"
-                width="515"
-                height="247"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="project-open" aria-hidden="true">↗</span>
-            </button>
-            <div class="project-caption"
-              ><h3><button type="button" data-open-project="wavesafe">Wave-Safe</button></h3
-              ><span class="project-type mono">BACKEND · PUBLIC SAFETY</span></div
+          </article>
+          <article data-project="racesafe" class="project-card">
+            <p class="project-type mono">Full-stack web application</p>
+            <h3><button type="button" data-open-project="racesafe">RaceSafe</button></h3>
+            <p
+              >A hackathon team workspace with expiring invites, live updates and database-enforced
+              seat limits.</p
             >
-            <p class="project-summary"
-              >A React interface backed by FastAPI services, geospatial routing and SOS
-              workflows.</p
-            ><p class="project-stack mono">REACT / FASTAPI / POSTGIS / REDIS / DOCKER</p>
+          </article>
+          <article data-project="nextup" class="project-card">
+            <p class="project-type mono">Clinic operations demo</p>
+            <h3><button type="button" data-open-project="nextup">NextUp</button></h3>
+            <p
+              >A synthetic clinic demo with transactional bookings, waitlists, live queues and
+              reviewed care tasks.</p
+            >
+          </article>
+          <article data-project="trading" class="project-card">
+            <p class="project-type mono">Systems engineering</p>
+            <h3><button type="button" data-open-project="trading">Paper Trading Engine</button></h3>
+            <p
+              >A deterministic paper trading replay with simulated fills, fixed-point accounting and
+              inline risk checks.</p
+            >
+          </article>
+          <article data-project="orbit" class="project-card">
+            <p class="project-type mono">Desktop application</p>
+            <h3><button type="button" data-open-project="orbit">Orbit</button></h3>
+            <p
+              >An early desktop IDE with a piece-table editor, multi-cursor editing, language-server
+              features and a terminal.</p
+            >
+          </article>
+          <article data-project="casetrace" class="project-card">
+            <p class="project-type mono">Training application</p>
+            <h3><button type="button" data-open-project="casetrace">CaseTrace</button></h3>
+            <p
+              >A synthetic investigation workspace for evidence integrity, transfer tracing, legal
+              lookup and supervisory review.</p
+            >
           </article>
         </div>
       </section>
       <section class="about-section wrap section-space" id="coding" aria-labelledby="coding-title">
-        <div class="section-marker mono"><span>02 / CODING PROFILES</span></div>
         <div class="section-heading"
           ><h2 id="coding-title">Coding profiles</h2
           ><p
@@ -212,11 +224,18 @@
         </dl>
       </section>
       <section class="about-section wrap section-space" id="about" aria-labelledby="about-title">
-        <div class="section-marker mono"><span>03 / ABOUT</span></div>
         <div class="about-layout">
           <div class="about-copy"
             ><h2 id="about-title">A little about me</h2
-            ><p class="about-lead" data-content="about" data-emphasis
+            ><img
+              class="about-portrait"
+              src="assets/profile.jpg"
+              alt="Rishabh Pal"
+              width="1254"
+              height="1254"
+              loading="lazy"
+            />
+            <p class="about-lead" data-content="about" data-emphasis
               >I'm a <strong>CSE student at RKGIT</strong> who enjoys connecting frontend
               interfaces, REST APIs and databases into useful products. My projects cover
               authentication, role-based access and real-time workflows. Alongside development, I
@@ -341,10 +360,6 @@
       </section>
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="wrap">
-          <div class="section-marker mono">
-            <span>04 / OPEN A CONVERSATION</span>
-            <span>GOOD WORK STARTS WITH A HELLO.</span>
-          </div>
           <div class="contact-layout">
             <div class="contact-intro">
               <h2 id="contact-title"

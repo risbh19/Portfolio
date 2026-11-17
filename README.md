@@ -4,7 +4,7 @@
 
 **Projects, engineering work and competitive programming in one place.**
 
-A responsive full-stack development and competitive programming portfolio built with HTML, CSS and JavaScript, with C++ as the preferred language for contests and problem solving. Includes CareFlow and Wave-Safe project details, LeetCode/Codeforces/CodeChef profiles, a GitHub source link to College Forum, experience, education, skills, achievements, a personal portrait and a downloadable résumé. The original palette, typography, artwork and responsive styles are preserved.
+A responsive portfolio with seven projects, local-run snapshots, coding profiles, experience, skills, a downloadable résumé and a contact form. It is built with HTML, CSS and JavaScript.
 
 ![HTML](https://img.shields.io/badge/HTML-334155?style=flat-square)
 ![CSS](https://img.shields.io/badge/CSS-334155?style=flat-square)
@@ -22,11 +22,11 @@ Project work, coding profiles and experience often live across separate pages. T
 
 ## At a glance
 
-| Area     | What it covers                                       |
-| -------- | ---------------------------------------------------- |
-| Work     | Project dialogs, experience and technical skills     |
-| Profiles | Competitive programming and source links             |
-| Contact  | Résumé download, email and a configured contact form |
+| Area     | What it covers                                                         |
+| -------- | ---------------------------------------------------------------------- |
+| Work     | Seven-project carousel, implementation details and local-run snapshots |
+| Profiles | Competitive programming and source links                               |
+| Contact  | Résumé download, email and a configured contact form                   |
 
 ## Quick start
 
@@ -46,8 +46,10 @@ dist/                 Tracked, hand-authored website source
   index.html          Layout, coding profiles, experience, skills and artwork
   content.js          Profile details, social links and project descriptions
   app.js              Navigation and project dialogs
+  project-slides.js   Project carousel and keyboard/touch controls
+  project-slides.css  Carousel layout and styling
   style.css           Styles and responsive layout
-  assets/             Portrait, favicon and supplied résumé PDF
+  assets/             Portrait, résumé, computer illustration and project snapshots
 scripts/              Local preview and source verification
 .github/              Automatic checks and pull request template
 vercel.json           Static deployment configuration
@@ -63,14 +65,14 @@ CONTRIBUTING.md       Review and merge workflow
 - Edit experience, education, achievements, skills, coding profile labels/handles, headings and fallback link destinations in `dist/index.html`.
 - Coding profile destinations live alongside GitHub and LinkedIn in `socials` in `dist/content.js`. Keep their HTML fallbacks in sync. Handles come from the owner's GitHub profile; ratings and problem counts are not hard-coded.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
-- Keep project keys (`careflow`, `wavesafe`) aligned with `data-project` and `data-open-project` attributes.
-- The supplied résumé and the owner's GitHub profile back the project and profile facts. Wave-Safe uses the owner-supplied homepage screenshot and links to a private repository. CareFlow is a synthetic-data prototype with a public source link and a labelled illustration; its product screenshots and live demo URL are still to be added.
+- Keep project keys aligned across project records, `data-project`, `data-open-project` and the snapshot filenames.
+- The snapshots come from local runs with sample or synthetic data. Paper Trading Engine shows the output of a simulated replay. Orbit and CaseTrace have private source repositories.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
 
 ## Contact form setup
 
-The contact section uses vanilla JavaScript and [Web3Forms](https://docs.web3forms.com/getting-started/api-reference). Paste the access key for `palrishabh989@gmail.com` into **`WEB3FORMS_ACCESS_KEY` at the top of `dist/contact.js`**, replacing `YOUR_WEB3FORMS_ACCESS_KEY`. This static site has no build step, so Vercel environment variables are not injected into browser scripts. Web3Forms access keys are intended for client-side use.
+The contact section uses vanilla JavaScript and [Web3Forms](https://docs.web3forms.com/getting-started/api-reference). To change the recipient, set **`WEB3FORMS_ACCESS_KEY` at the top of `dist/contact.js`** to the access key for the receiving inbox. This static site has no build step, so Vercel environment variables are not injected into browser scripts. Web3Forms access keys are intended for client-side use.
 
 The form posts `FormData` directly to Web3Forms, including the topic/name subject, reply email, message and hidden `botcheck` honeypot. It shows validation, sending, success/reset and failure states in place. Requests time out after 20 seconds; failures preserve the visitor's message. The email icon remains a direct fallback. With the placeholder key, the form shows the failure message without sending a request.
 
@@ -84,7 +86,7 @@ npm run check
 git diff --check
 ```
 
-The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check desktop/mobile layouts, keyboard navigation, experience/toolkit disclosures, project dialogs and any changed links in the browser.
+The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check the desktop and mobile layouts, all seven snapshots and project dialogs, keyboard navigation and focus restoration, and the contact form and résumé link in the browser.
 
 GitHub Actions runs verification on pull requests and pushes to `main`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and merge workflow. Keep `package-lock.json` with dependency changes; dependencies, local exports, environment files and `.vercel/` stay out of Git.
 
@@ -103,8 +105,8 @@ After reviewing and merging the current pull request, import `risbh19/Portfolio`
 
 Only `dist/` is served. Development tooling runs locally and in GitHub Actions; deployment needs no package installation, build server or backend. Configuration follows the [Vercel configuration reference](https://vercel.com/docs/project-configuration/vercel-json).
 
-Google Fonts has system font fallbacks. Email links use the visitor's mail application.
+Email links use the visitor's mail application.
 
 ## Design reference
 
-Inspired by the editorial palette of [Content Architecture](https://www.contentarchitecture.dev/). Layout, copy, SVG/CSS illustrations and project compositions were created for this portfolio.
+The retro Macintosh-inspired design uses a desktop menu bar, striped title bars, offset shadows and an original computer SVG. The project carousel sits alongside coding profiles, an About window and a contact window.
