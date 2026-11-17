@@ -226,13 +226,16 @@ img {
   font-size: clamp(1rem, 1.5vw, 1.16rem);
 }
 
-.hero-art {
-  background: radial-gradient(var(--line) 0.75px, transparent 0.75px) var(--desktop) 0 0 / 5px 5px;
+.hero-photo {
   border: 1px solid var(--ink);
+  background: var(--desktop);
 }
 
-.hero-art img {
+.hero-photo img {
   width: 100%;
+  aspect-ratio: 49 / 38;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .raised-link,
@@ -679,7 +682,7 @@ dialog::backdrop {
     min-height: 0;
   }
 
-  .hero-art {
+  .hero-photo {
     max-width: 28rem;
   }
 
