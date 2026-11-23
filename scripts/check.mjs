@@ -48,6 +48,15 @@ try {
   assert.equal(new Set(ids).size, ids.length, 'HTML IDs must be unique.');
   assert.equal((html.match(/<h1\b/g) || []).length, 1, 'The page must have one h1.');
   assert.ok(ids.includes('main'), 'The main content anchor is missing.');
+  assert.ok(
+    html.includes('class="hero-actions"'),
+    'The hero project and résumé actions are missing.',
+  );
+  assert.ok(
+    html.includes('class="work-heading__subtitle"'),
+    'The featured work introduction is missing.',
+  );
+  assert.ok(html.includes('rel="canonical"'), 'Canonical site metadata is missing.');
   const scripts = values(html, 'src');
   assert.ok(scripts.includes('content.js'), 'The content script is missing.');
   assert.ok(
@@ -85,6 +94,15 @@ try {
     'data-project',
   );
   assert.equal(featuredIds.length, 6, 'Expected six featured projects.');
+  const carouselScript = read('dist/project-slides.js');
+  assert.ok(
+    carouselScript.includes("source.className = 'project-card__source'"),
+    'Featured cards must expose a source link without opening the modal.',
+  );
+  assert.ok(
+    carouselScript.includes('previous.disabled = i === 0'),
+    'Carousel navigation must disable the previous button at the boundary.',
+  );
   assert.equal(additionalIds.length, 2, 'Expected two additional projects.');
   assert.deepEqual(
     [...projectIds].sort(),

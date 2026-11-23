@@ -19,15 +19,18 @@
   };
   const projects = window.PORTFOLIO.projects;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  section.setAttribute('aria-roledescription', 'carousel');
+  track.setAttribute('aria-roledescription', 'carousel');
   track.classList.add('is-carousel');
   track.id = 'project-carousel-track';
-  track.setAttribute('role', 'group');
+  track.setAttribute('role', 'region');
   track.setAttribute('aria-label', 'Project cards');
 
-  cards.forEach((card) => {
+  cards.forEach((card, i) => {
     const { project: key } = card.dataset;
     const project = projects[key];
+    card.setAttribute('role', 'group');
+    card.setAttribute('aria-roledescription', 'slide');
+    card.setAttribute('aria-label', `${project.title}, ${i + 1} of ${cards.length}`);
     const category = card.querySelector('.project-type');
     const title = card.querySelector('h3');
     const details = card.querySelector('[data-open-project]');
@@ -51,9 +54,23 @@
     stack.className = 'project-card__stack';
     stack.textContent = project.stack;
     title.textContent = project.title;
-    details.textContent = 'Project details ↗';
+    details.textContent = 'Explore project ↗';
     details.setAttribute('aria-label', `Project details — ${project.title}`);
-    copy.append(title, summary, stack, details);
+
+    const actions = document.createElement('div');
+    actions.className = 'project-card__actions';
+    actions.append(details);
+    if (project.link) {
+      const source = document.createElement('a');
+      source.className = 'project-card__source';
+      source.href = project.link;
+      source.target = '_blank';
+      source.rel = 'noopener noreferrer';
+      source.textContent = 'Source code ↗';
+      source.setAttribute('aria-label', `View ${project.title} source code on GitHub`);
+      actions.append(source);
+    }
+    copy.append(title, summary, stack, actions);
     card.append(figure, copy);
   });
 
@@ -95,8 +112,8 @@
   function update(i, announce) {
     current = i;
     position.textContent = `${format(i + 1)} / ${format(cards.length)}`;
-    previous.setAttribute('aria-disabled', String(i === 0));
-    next.setAttribute('aria-disabled', String(i === cards.length - 1));
+    previous.disabled = i === 0;
+    next.disabled = i === cards.length - 1;
     choices.forEach((button, choice) => button.setAttribute('aria-current', String(choice === i)));
     if (announce)
       status.textContent = `${projects[cards[i].dataset.project].title}, project ${i + 1} of ${cards.length}`;
