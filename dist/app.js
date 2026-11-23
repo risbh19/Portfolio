@@ -29,7 +29,7 @@
     );
   });
   $$('[data-year]').forEach((node) => (node.textContent = new Date().getFullYear()));
-  document.title = `${config.name.replace(/[\[\]]/g, '')} — Full-Stack Developer & Problem Solver`;
+  document.title = `${config.name.replace(/[\[\]]/g, '')} — Backend & Systems Engineering`;
   $$('[data-email-link]').forEach((link) => {
     link.href = `mailto:${config.email}`;
   });
@@ -44,7 +44,8 @@
   $$('[data-project]').forEach((card) => {
     const project = config.projects[card.dataset.project];
     if (!project) return;
-    $('h3 button', card).textContent = project.title;
+    const title = $('h3 button, h4', card);
+    if (title) title.textContent = project.title;
     $('.project-type', card).textContent = project.category.toUpperCase();
   });
 
@@ -119,6 +120,7 @@
   function openProject(id) {
     const project = config.projects[id];
     if (!project) return;
+    const snapshot = project.snapshot || `assets/project-snapshots/${id}.webp`;
     openDialog(
       `SELECTED WORK / ${project.number}`,
       /* HTML */ `
@@ -130,10 +132,10 @@
           <p class="project-intro">${esc(project.summary)}</p>
           <figure class="dialog-art">
             <img
-              src="assets/project-snapshots/${esc(id)}.webp"
+              src="${esc(snapshot)}"
               width="1120"
               height="700"
-              alt="Local capture of ${esc(project.title)}"
+              alt="${esc(project.snapshot ? `Demo view of ${project.title}` : `Local capture of ${project.title}`)}"
             />
           </figure>
           <p class="visual-note mono">${esc(project.visualNote)}</p>
