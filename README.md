@@ -22,11 +22,11 @@ Project work, coding profiles and experience often live across separate pages. T
 
 ## At a glance
 
-| Area     | What it covers                                                         |
-| -------- | ---------------------------------------------------------------------- |
+| Area     | What it covers                                                           |
+| -------- | ------------------------------------------------------------------------ |
 | Work     | Six-project carousel, two additional projects and implementation details |
-| Profiles | Competitive programming and source links                               |
-| Contact  | Résumé download, email and a configured contact form                   |
+| Profiles | Competitive programming and source links                                 |
+| Contact  | Résumé download, email and a configured contact form                     |
 
 ## Quick start
 

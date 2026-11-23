@@ -93,7 +93,8 @@ window.PORTFOLIO = {
         'Built API inventory, ingestion keys, event records, detection rules, alert correlation and incident workflows.',
       outcome:
         'The Docker Compose demo uses synthetic traffic and includes integration, permission and recovery verification.',
-      visualNote: 'Captured from the documented synthetic local demo in the API Sentinel repository.',
+      visualNote:
+        'Captured from the documented synthetic local demo in the API Sentinel repository.',
       snapshot:
         'https://raw.githubusercontent.com/risbh19/api-sentinel/main/docs/media/overview.png',
       link: 'https://github.com/risbh19/api-sentinel',

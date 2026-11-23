@@ -130,7 +130,12 @@
   previous.addEventListener('click', () => select(current - 1));
   next.addEventListener('click', () => select(current + 1));
   section.addEventListener('keydown', (event) => {
-    if (!track.contains(event.target) && !navigation.contains(event.target) && !index.contains(event.target)) return;
+    if (
+      !track.contains(event.target) &&
+      !navigation.contains(event.target) &&
+      !index.contains(event.target)
+    )
+      return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     if (event.key === 'Home') select(0);

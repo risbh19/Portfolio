@@ -76,7 +76,10 @@ try {
   }
   const projectIds = values(html, 'data-project');
   assert.equal(new Set(projectIds).size, projectIds.length, 'Project card keys must be unique.');
-  const featuredIds = values(html.split('<div class="project-grid">')[1].split('</div>')[0], 'data-project');
+  const featuredIds = values(
+    html.split('<div class="project-grid">')[1].split('</div>')[0],
+    'data-project',
+  );
   const additionalIds = values(
     html.split('<div class="more-projects-grid">')[1].split('</div>')[0],
     'data-project',
@@ -89,17 +92,25 @@ try {
     'Project cards and content keys must match.',
   );
   for (const id of projectIds) {
-    const snapshotPath =
-      config.projects[id].snapshot || `assets/project-snapshots/${id}.webp`;
+    const snapshotPath = config.projects[id].snapshot || `assets/project-snapshots/${id}.webp`;
     if (snapshotPath.startsWith('https://')) {
       const url = new URL(snapshotPath);
       assert.equal(url.hostname, 'raw.githubusercontent.com', `Untrusted snapshot host: ${id}`);
-      assert.ok(url.pathname.startsWith('/risbh19/api-sentinel/'), `Unknown snapshot source: ${id}`);
+      assert.ok(
+        url.pathname.startsWith('/risbh19/api-sentinel/'),
+        `Unknown snapshot source: ${id}`,
+      );
     } else {
       const snapshot = resolve(dist, snapshotPath);
       const localPath = relative(dist, snapshot);
-      assert.ok(!localPath.startsWith('..') && !isAbsolute(localPath), `Invalid snapshot path: ${id}`);
-      assert.ok(existsSync(snapshot) && statSync(snapshot).isFile(), `Missing project snapshot: ${id}`);
+      assert.ok(
+        !localPath.startsWith('..') && !isAbsolute(localPath),
+        `Invalid snapshot path: ${id}`,
+      );
+      assert.ok(
+        existsSync(snapshot) && statSync(snapshot).isFile(),
+        `Missing project snapshot: ${id}`,
+      );
     }
     for (const field of [
       'title',
