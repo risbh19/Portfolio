@@ -4,7 +4,7 @@
 
 **Projects, engineering work and competitive programming in one place.**
 
-A responsive portfolio with seven projects, local-run snapshots, coding profiles, experience, skills, a downloadable résumé and a contact form. It is built with HTML, CSS and JavaScript.
+A responsive portfolio with six featured and two additional projects, documented visuals, coding profiles, experience, skills, a downloadable résumé and a contact form. It is built with HTML, CSS and JavaScript.
 
 ![HTML](https://img.shields.io/badge/HTML-334155?style=flat-square)
 ![CSS](https://img.shields.io/badge/CSS-334155?style=flat-square)
@@ -24,7 +24,7 @@ Project work, coding profiles and experience often live across separate pages. T
 
 | Area     | What it covers                                                         |
 | -------- | ---------------------------------------------------------------------- |
-| Work     | Seven-project carousel, implementation details and local-run snapshots |
+| Work     | Six-project carousel, two additional projects and implementation details |
 | Profiles | Competitive programming and source links                               |
 | Contact  | Résumé download, email and a configured contact form                   |
 
@@ -65,8 +65,8 @@ CONTRIBUTING.md       Review and merge workflow
 - Edit experience, education, achievements, skills, coding profile labels/handles, headings and fallback link destinations in `dist/index.html`.
 - Coding profile destinations live alongside GitHub and LinkedIn in `socials` in `dist/content.js`. Keep their HTML fallbacks in sync. Handles come from the owner's GitHub profile; ratings and problem counts are not hard-coded.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
-- Keep project keys aligned across project records, `data-project`, `data-open-project` and the snapshot filenames.
-- The snapshots come from local runs with sample or synthetic data. Paper Trading Engine shows the output of a simulated replay. Orbit and CaseTrace have private source repositories.
+- Keep project keys aligned across project records and their `data-project`/`data-open-project` attributes. Featured cards belong in the carousel, with two smaller cards in More projects. Local snapshots default to `assets/project-snapshots/<key>.webp`; use `snapshot` for an explicitly documented image source.
+- Most snapshots come from local runs with sample or synthetic data. API Sentinel uses the screenshot from its public repository's documented synthetic demo. Paper Trading Engine shows simulated replay output. Orbit and CaseTrace link to their public source repositories.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
 
@@ -86,7 +86,7 @@ npm run check
 git diff --check
 ```
 
-The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check the desktop and mobile layouts, all seven snapshots and project dialogs, keyboard navigation and focus restoration, and the contact form and résumé link in the browser.
+The checks validate JavaScript syntax, profile/project mappings, local files, anchors, duplicate IDs, conflict markers, Vercel settings and formatting. Also check the desktop and mobile layouts, all six featured cards, two additional project dialogs and their visuals, keyboard navigation and focus restoration, and the contact form and résumé link in the browser.
 
 GitHub Actions runs verification on pull requests and pushes to `main`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and merge workflow. Keep `package-lock.json` with dependency changes; dependencies, local exports, environment files and `.vercel/` stay out of Git.
 

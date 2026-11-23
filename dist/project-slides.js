@@ -12,6 +12,7 @@
     collegeforum: 'Forum boards and demo posts',
     racesafe: 'Team recruitment workspace',
     nextup: 'Confirmed demo clinic booking',
+    apisentinel: 'Synthetic API traffic overview',
     trading: 'Local paper-trading replay',
     orbit: 'Hello Orbit workspace',
     casetrace: 'Synthetic transfer trail',
@@ -36,7 +37,7 @@
     const figure = document.createElement('figure');
     figure.className = 'project-card__snapshot';
     const image = new Image(1120, 700);
-    image.src = `assets/project-snapshots/${key}.webp`;
+    image.src = project.snapshot || `assets/project-snapshots/${key}.webp`;
     image.alt = `${project.title} — ${captions[key]}`;
     image.loading = 'lazy';
     image.decoding = 'async';
@@ -129,6 +130,7 @@
   previous.addEventListener('click', () => select(current - 1));
   next.addEventListener('click', () => select(current + 1));
   section.addEventListener('keydown', (event) => {
+    if (!track.contains(event.target) && !navigation.contains(event.target) && !index.contains(event.target)) return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     if (event.key === 'Home') select(0);
