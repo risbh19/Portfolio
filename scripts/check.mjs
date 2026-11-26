@@ -94,14 +94,10 @@ try {
     'data-project',
   );
   assert.equal(featuredIds.length, 6, 'Expected six featured projects.');
-  const carouselScript = read('dist/project-slides.js');
+  const projectScript = read('dist/project-slides.js');
   assert.ok(
-    carouselScript.includes("source.className = 'project-card__source'"),
+    projectScript.includes("source.className = 'project-card__source'"),
     'Featured cards must expose a source link without opening the modal.',
-  );
-  assert.ok(
-    carouselScript.includes('previous.disabled = i === 0'),
-    'Carousel navigation must disable the previous button at the boundary.',
   );
   assert.equal(additionalIds.length, 2, 'Expected two additional projects.');
   assert.deepEqual(

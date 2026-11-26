@@ -282,45 +282,6 @@ img {
   background: var(--chrome);
 }
 
-.desktop-shortcuts {
-  position: relative;
-  z-index: 1;
-}
-
-.desktop-shortcuts h2 {
-  margin-bottom: 0.5rem;
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  letter-spacing: -0.03em;
-}
-
-.shortcut-list {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid var(--ink);
-  background: var(--chrome);
-  box-shadow: 3px 3px var(--ink);
-}
-
-.desktop-shortcuts a {
-  display: flex;
-  min-height: 3rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.55rem 0.9rem;
-  background: var(--chrome);
-  font: 700 0.85rem/1.35 var(--mono);
-  text-decoration: none;
-}
-
-.desktop-shortcuts a + a {
-  border-inline-start: 1px solid var(--ink);
-}
-
-.desktop-shortcuts a:hover {
-  background: var(--desktop);
-}
-
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
@@ -444,18 +405,47 @@ details summary .mono {
   font-size: 0.75rem;
 }
 
-.milestone-list {
-  padding-left: 1.25rem;
+.recognition-grid,
+.approach-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
-
-.milestone-list span {
-  display: block;
+.recognition-grid article,
+.approach-list details {
+  border: 1px solid var(--ink);
+  padding: clamp(1rem, 3vw, 2rem);
+  background: var(--paper);
 }
-
-.skills-section {
-  margin-top: 2.25rem;
+.recognition-grid h3 {
+  margin: 0.8rem 0 0.25rem;
+  font-size: 1.45rem;
+  line-height: 1.15;
 }
-
+.about-layout {
+  align-items: center;
+  grid-template-columns: minmax(9rem, 0.6fr) minmax(0, 1.4fr);
+}
+.about-portrait {
+  width: 100%;
+  max-width: 19rem;
+  margin: 0;
+}
+.hero-photo {
+  border-radius: 50%;
+  padding: 0.65rem;
+  box-shadow:
+    0 0 0 0.35rem var(--paper),
+    0 0 0 calc(0.35rem + 1px) var(--line);
+}
+.hero-photo img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+.skills-section .core-tools {
+  margin-block: 1.5rem;
+}
 .core-tools,
 .contact-topic-buttons,
 .contact-icons,
@@ -676,7 +666,7 @@ dialog::backdrop {
   margin-top: 1.4rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .hero-layout {
     gap: 1.7rem;
     padding-top: 2rem;
@@ -730,22 +720,6 @@ dialog::backdrop {
 
   .hero-photo {
     max-width: 28rem;
-  }
-
-  .shortcut-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .desktop-shortcuts a:nth-child(3) {
-    border-inline-start: 0;
-  }
-
-  .desktop-shortcuts a:nth-child(n + 3) {
-    border-top: 1px solid var(--ink);
-  }
-
-  .experience {
-    margin-top: 1rem;
   }
 }
 
