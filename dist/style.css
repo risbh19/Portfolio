@@ -425,7 +425,7 @@ details summary .mono {
 }
 .about-layout {
   align-items: center;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(9rem, 0.6fr) minmax(0, 1.4fr);
 }
 .about-portrait {
   width: 100%;
