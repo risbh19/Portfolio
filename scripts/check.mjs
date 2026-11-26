@@ -52,10 +52,6 @@ try {
     html.includes('class="hero-actions"'),
     'The hero project and résumé actions are missing.',
   );
-  assert.ok(
-    html.includes('class="work-heading__subtitle"'),
-    'The featured work introduction is missing.',
-  );
   assert.ok(html.includes('rel="canonical"'), 'Canonical site metadata is missing.');
   const scripts = values(html, 'src');
   assert.ok(scripts.includes('content.js'), 'The content script is missing.');

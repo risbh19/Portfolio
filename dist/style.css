@@ -745,3 +745,43 @@ dialog::backdrop {
     gap: 0.3rem;
   }
 }
+
+.skills-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.toolkit-grid article {
+  padding: 1.25rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+.toolkit-grid ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0;
+  margin: 0.85rem 0 0;
+  list-style: none;
+}
+.toolkit-grid li {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--line);
+  font: 0.82rem/1.4 var(--mono);
+}
+@media (max-width: 800px) {
+  .skills-section {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .toolkit-grid {
+    grid-template-columns: 1fr;
+  }
+}
