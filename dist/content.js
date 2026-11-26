@@ -17,7 +17,7 @@ window.PORTFOLIO = {
     codeforces: 'https://codeforces.com/profile/Sensi__',
     codechef: 'https://www.codechef.com/users/risbh_cf',
   },
-  resumeUrl: 'assets/Rishabh_Resume.pdf',
+  resumeUrl: 'https://drive.google.com/file/d/1i6qN9ZpwdTBx5CRao7Y9Qt7Dfi485prn/view?usp=sharing',
   projects: {
     miniredis: {
       title: 'mini-redis',
