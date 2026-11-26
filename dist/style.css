@@ -196,9 +196,9 @@ img {
 
 .hero h1 {
   margin: 0.85rem 0 1.3rem;
-  font-size: clamp(3.35rem, 7.2vw, 6.5rem);
-  line-height: 0.89;
-  letter-spacing: -0.075em;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
 }
 
 .hero-description {
@@ -670,10 +670,6 @@ dialog::backdrop {
   .hero-layout {
     gap: 1.7rem;
     padding-top: 2rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(3.2rem, 13vw, 5.8rem);
   }
 
   .desktop-nav {
