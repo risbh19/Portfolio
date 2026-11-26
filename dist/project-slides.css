@@ -1,6 +1,6 @@
 .work-section {
-  margin-top: clamp(3.75rem, 8vw, 6.25rem);
-  padding: clamp(3.5rem, 5.5vw, 4.5rem) 0 clamp(2.25rem, 5vw, 4rem);
+  margin-top: 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(2.25rem, 5vw, 4rem);
   border-block: 2px solid var(--ink);
   background:
     radial-gradient(#a8a8a4 0.55px, transparent 0.55px) 0 0 / 5px 5px,
@@ -24,7 +24,7 @@
 }
 
 .featured-slider {
-  width: min(100%, 32rem);
+  width: min(100%, 54rem);
   margin: 1.5rem auto 0;
 }
 .featured-slider .project-navigation {
@@ -351,5 +351,22 @@
   .is-carousel .project-card:hover,
   .more-project-card:hover {
     transform: none;
+  }
+}
+
+@media (min-width: 760px) {
+  .is-carousel .project-card {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+  .project-card__bar {
+    grid-column: 1 / -1;
+  }
+  .project-card__snapshot {
+    align-self: center;
+  }
+  .project-card__copy {
+    align-content: center;
+    grid-template-rows: auto;
   }
 }
