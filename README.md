@@ -22,11 +22,11 @@ Project work, coding profiles and experience often live across separate pages. T
 
 ## At a glance
 
-| Area     | What it covers                                                           |
-| -------- | ------------------------------------------------------------------------ |
-| Work     | Six-project carousel, two additional projects and implementation details |
-| Profiles | Competitive programming and source links                                 |
-| Contact  | Résumé download, email and a configured contact form                     |
+| Area     | What it covers                                                              |
+| -------- | --------------------------------------------------------------------------- |
+| Work     | Featured project slider, two additional projects and implementation details |
+| Profiles | Competitive programming and source links                                    |
+| Contact  | Résumé download, email and a configured contact form                        |
 
 ## Quick start
 
@@ -46,8 +46,8 @@ dist/                 Tracked, hand-authored website source
   index.html          Layout, coding profiles, experience, skills and artwork
   content.js          Profile details, social links and project descriptions
   app.js              Navigation and project dialogs
-  project-slides.js   Project carousel and keyboard/touch controls
-  project-slides.css  Carousel layout and styling
+  project-slides.js   Featured project snapshots, details and source links
+  project-slides.css  Project slider layout and styling
   style.css           Styles and responsive layout
   assets/             Profile photo, résumé and project snapshots
 scripts/              Local preview and source verification
@@ -65,7 +65,7 @@ CONTRIBUTING.md       Review and merge workflow
 - Edit experience, education, achievements, skills, coding profile labels/handles, headings and fallback link destinations in `dist/index.html`.
 - Coding profile destinations live alongside GitHub and LinkedIn in `socials` in `dist/content.js`. Keep their HTML fallbacks in sync. Handles come from the owner's GitHub profile; ratings and problem counts are not hard-coded.
 - Put portfolio assets in `dist/assets/`. Update the résumé PDF when its details change.
-- Keep project keys aligned across project records and their `data-project`/`data-open-project` attributes. Featured cards belong in the carousel, with two smaller cards in More projects. Local snapshots default to `assets/project-snapshots/<key>.webp`; use `snapshot` for an explicitly documented image source.
+- Keep project keys aligned across project records and their `data-project`/`data-open-project` attributes. Featured cards belong in the slider, with two smaller cards in More projects. Local snapshots default to `assets/project-snapshots/<key>.webp`; use `snapshot` for an explicitly documented image source.
 - Most snapshots come from local runs with sample or synthetic data. API Sentinel uses the screenshot from its public repository's documented synthetic demo. Paper Trading Engine shows simulated replay output. Orbit and CaseTrace link to their public source repositories.
 
 Email, social and résumé controls are normal links with HTML fallbacks. JavaScript keeps their destinations aligned with the configuration.
@@ -109,4 +109,4 @@ Email links use the visitor's mail application.
 
 ## Design reference
 
-The retro Macintosh-inspired design uses a gray desktop menu bar, a full-width welcome area with a portrait, and a patterned Projects section with window-style cards. Scroll, swipe, use the arrow keys or select a numbered control to move through the carousel. Coding profiles, About and Contact sit below the Projects section.
+The retro Macintosh-inspired design uses a gray desktop menu bar, a full-width welcome area with a portrait, and a patterned Projects section with window-style cards. Featured projects appear one at a time in a centered slider with swipe, arrow and keyboard navigation. Experience, achievements, skills and coding profiles have dedicated navigation links.

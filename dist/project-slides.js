@@ -25,6 +25,35 @@
   track.setAttribute('role', 'region');
   track.setAttribute('aria-label', 'Project cards');
 
+  function appendProjectLinks(actions, project) {
+    const source = document.createElement('a');
+    source.className = 'project-card__source';
+    source.href = project.link;
+    source.textContent = 'GitHub';
+    source.setAttribute('aria-label', 'View ' + project.title + ' source code on GitHub');
+    actions.append(source);
+    const demo = document.createElement(project.demo ? 'a' : 'span');
+    demo.className = project.demo ? 'project-card__source' : 'demo-placeholder';
+    demo.textContent = project.demo ? 'Live demo' : 'Demo coming soon';
+    if (project.demo) {
+      demo.href = project.demo;
+      demo.setAttribute('aria-label', 'Open ' + project.title + ' live demo');
+    }
+    actions.append(demo);
+    for (const link of actions.querySelectorAll('a')) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+  }
+
+  section.querySelectorAll('.more-project-card').forEach((card) => {
+    const actions = document.createElement('div');
+    actions.className = 'project-card__actions';
+    actions.append(card.querySelector('[data-open-project]'));
+    appendProjectLinks(actions, projects[card.dataset.project]);
+    card.append(actions);
+  });
+
   cards.forEach((card, i) => {
     const { project: key } = card.dataset;
     const project = projects[key];
@@ -60,17 +89,15 @@
     const actions = document.createElement('div');
     actions.className = 'project-card__actions';
     actions.append(details);
-    if (project.link) {
-      const source = document.createElement('a');
-      source.className = 'project-card__source';
-      source.href = project.link;
-      source.target = '_blank';
-      source.rel = 'noopener noreferrer';
-      source.textContent = 'Source code ↗';
-      source.setAttribute('aria-label', `View ${project.title} source code on GitHub`);
-      actions.append(source);
+    appendProjectLinks(actions, project);
+    if (key === 'miniredis' || key === 'racesafe') {
+      const result = document.createElement('p');
+      result.className = 'project-result';
+      result.textContent = project.contribution;
+      copy.append(title, summary, result, stack, actions);
+    } else {
+      copy.append(title, summary, stack, actions);
     }
-    copy.append(title, summary, stack, actions);
     card.append(figure, copy);
   });
 
@@ -81,7 +108,10 @@
     <span class="project-navigation__position" aria-hidden="true"></span>
     <button type="button" aria-label="Next project" aria-controls="project-carousel-track">→</button>
   `;
-  heading.append(navigation);
+  const slider = document.createElement('div');
+  slider.className = 'featured-slider';
+  track.before(slider);
+  slider.append(track, navigation);
   const [previous, next] = navigation.querySelectorAll('button');
   const position = navigation.querySelector('.project-navigation__position');
 
@@ -92,7 +122,7 @@
   const status = document.createElement('p');
   status.className = 'project-carousel-status';
   status.setAttribute('role', 'status');
-  track.after(index, status);
+  navigation.after(index, status);
 
   let current = 0;
   let scrollTimer;

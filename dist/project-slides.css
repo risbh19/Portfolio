@@ -1,6 +1,6 @@
 .work-section {
-  margin-top: -1.6rem;
-  padding: clamp(3.5rem, 5.5vw, 4.5rem) 0 clamp(2.25rem, 5vw, 4rem);
+  margin-top: 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(2.25rem, 5vw, 4rem);
   border-block: 2px solid var(--ink);
   background:
     radial-gradient(#a8a8a4 0.55px, transparent 0.55px) 0 0 / 5px 5px,
@@ -23,16 +23,22 @@
   max-width: 49rem;
 }
 
-.work-heading__subtitle {
-  max-width: 59ch;
-  margin-top: 0.8rem;
-  color: var(--muted);
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
-  line-height: 1.6;
+.featured-slider {
+  width: min(100%, 54rem);
+  margin: 1.5rem auto 0;
+}
+.featured-slider .project-navigation {
+  width: fit-content;
+  margin: 0.75rem auto 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .featured-slider:not(:hover):not(:focus-within) .project-navigation {
+    opacity: 0;
+  }
 }
 
 .project-grid.is-carousel {
-  --window-width: clamp(19rem, 40vw, 30rem);
+  --window-width: 100%;
   --window-gap: clamp(0.75rem, 2vw, 1.5rem);
   position: relative;
   display: grid;
@@ -41,11 +47,11 @@
   grid-auto-columns: var(--window-width);
   gap: var(--window-gap);
   align-items: stretch;
-  padding: 0.35rem max(6px, calc(100% - var(--window-width))) 0.7rem 0;
+  padding: 0.35rem 0 0.7rem;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: 0.4rem;
+  margin-top: 0;
   scrollbar-width: thin;
   scrollbar-color: #66645d transparent;
 }
@@ -224,6 +230,7 @@
 }
 
 .project-index {
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 0.8rem;
 }
@@ -330,18 +337,6 @@
     flex-wrap: wrap;
   }
 
-  .work-heading__subtitle {
-    max-width: 42ch;
-  }
-
-  .project-navigation {
-    margin-top: 0.4rem;
-  }
-
-  .project-grid.is-carousel {
-    --window-width: calc(100% - 2.5rem);
-  }
-
   .more-projects-grid {
     grid-template-columns: 1fr;
   }
@@ -356,5 +351,22 @@
   .is-carousel .project-card:hover,
   .more-project-card:hover {
     transform: none;
+  }
+}
+
+@media (min-width: 760px) {
+  .is-carousel .project-card {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+  .project-card__bar {
+    grid-column: 1 / -1;
+  }
+  .project-card__snapshot {
+    align-self: center;
+  }
+  .project-card__copy {
+    align-content: center;
+    grid-template-rows: auto;
   }
 }
