@@ -5,7 +5,7 @@ window.PORTFOLIO = {
   location: 'RKGIT · Ghaziabad, India',
   email: 'palrishabh989@gmail.com',
   intro:
-    "I'm Rishabh, a CSE student building **backend systems** and **full-stack products** with FastAPI, PostgreSQL, React and C++. I focus on concurrency, reliable workflows and testable engineering.",
+    'I’m a computer science student at RKGIT. I build with FastAPI, PostgreSQL and C++, with a focus on concurrency, storage and reliable application workflows.',
   about:
     "I'm a **CSE student at RKGIT** building backend services, full-stack applications and C++ systems software. My projects explore transactions, concurrency, authentication, storage and real-time workflows. I also practise **competitive programming in C++**, focusing on complexity and edge cases.",
   status: 'B.Tech CSE student · RKGIT',
