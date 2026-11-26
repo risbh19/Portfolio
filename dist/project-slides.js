@@ -32,14 +32,14 @@
     source.textContent = 'GitHub';
     source.setAttribute('aria-label', 'View ' + project.title + ' source code on GitHub');
     actions.append(source);
-    const demo = document.createElement(project.demo ? 'a' : 'span');
-    demo.className = project.demo ? 'project-card__source' : 'demo-placeholder';
-    demo.textContent = project.demo ? 'Live demo' : 'Demo coming soon';
     if (project.demo) {
+      const demo = document.createElement('a');
+      demo.className = 'project-card__source';
+      demo.textContent = 'Live demo';
       demo.href = project.demo;
       demo.setAttribute('aria-label', 'Open ' + project.title + ' live demo');
+      actions.append(demo);
     }
-    actions.append(demo);
     for (const link of actions.querySelectorAll('a')) {
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
