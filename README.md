@@ -107,6 +107,6 @@ Only `dist/` is served. Development tooling runs locally and in GitHub Actions; 
 
 Email links use the visitor's mail application.
 
-## Design reference
+## Design
 
-The retro Macintosh-inspired design uses a gray desktop menu bar, a full-width welcome area with a portrait, and a patterned Projects section with window-style cards. Featured projects appear one at a time in a centered slider with swipe, arrow and keyboard navigation. Experience, achievements, skills and coding profiles have dedicated navigation links.
+The portfolio uses an off-white editorial layout with teal project links, a single portrait and a centered project slider. Source and available demo links are visible on each card. Set a project’s `demo` in `dist/content.js` to replace its public demo placeholder.
